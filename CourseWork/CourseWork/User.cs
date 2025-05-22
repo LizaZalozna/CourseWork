@@ -43,4 +43,3 @@ namespace CourseWork
         public Librarian(string fullName, string login, string password) : base(fullName, login, password) { }
     }
 }
-
