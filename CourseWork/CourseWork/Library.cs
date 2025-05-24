@@ -56,6 +56,26 @@ namespace CourseWork
                 return false;
             }
         }
+
+        public void CheckUnclaimedReservations()
+        {
+            foreach (var user in users)
+            {
+                if (user is SimpleUser)
+                {
+                    foreach (var res in ((SimpleUser)user).reservations_)
+                    {
+                        if ((DateTime.Now - res.reservationDate_).TotalDays > 5)
+                        {
+                            ((SimpleUser)user).ChangeReputation(-5);
+                            ((SimpleUser)user).reservations_.Remove(res);
+                            ((SimpleUser)user).reservedBooks_.Remove(res.book_);
+                            res.book_.CancelReservation();
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -30,10 +30,10 @@ namespace CourseWork
     public class SimpleUser : User
     {
         int reputation;
-        public List<Book> reservedBooks;
-        public List<ReservationRecord> reservations;
-        public List<Book> lendedBooks;
-        public List<LendingRecord> lendings;
+        List<Book> reservedBooks;
+        List<ReservationRecord> reservations;
+        List<Book> lendedBooks;
+        List<LendingRecord> lendings;
 
         public int reputation_
         {
@@ -41,6 +41,26 @@ namespace CourseWork
         }
 
         public void ChangeReputation(int n) => reputation += n;
+
+        public List<Book> reservedBooks_
+        {
+            get { return reservedBooks; }
+        }
+
+        public List<ReservationRecord> reservations_
+        {
+            get { return reservations; }
+        }
+
+        public List<Book> lendedBooks_
+        {
+            get { return lendedBooks; }
+        }
+
+        public List<LendingRecord> lendings_
+        {
+            get { return lendings; }
+        }
 
         public SimpleUser(string fullName, string login, string password) : base(fullName, login, password)
         {
@@ -70,14 +90,15 @@ namespace CourseWork
 
         public bool LendBook(Book book, SimpleUser user, DateTime date)
         {
-            if (book.Lend(user) && user.reputation_ > 0) 
+            if (user.reputation_ > 0 && book.Lend(user))
             {
-                user.lendedBooks.Add(book);
-                user.lendings.Add(new LendingRecord(book, date));
+                user.lendedBooks_.Add(book);
+                user.lendings_.Add(new LendingRecord(book, date));
                 if (book.isReserved_)
                 {
                     user.ChangeReputation(5);
-                    user.reservedBooks.Remove(book);
+                    user.reservedBooks_.Remove(book);
+                    user.reservations_.RemoveAll(r => r.book_ == book);
                 }
                 return true;
             }
@@ -87,7 +108,7 @@ namespace CourseWork
         public void ReturnBook(Book book, SimpleUser user, DateTime date)
         {
             book.Return();
-            LendingRecord record = user.lendings.Find(r => r.book_ == book);
+            LendingRecord record = user.lendings_.Find(r => r.book_ == book);
             if (record != null)
             {
                 record.returnDate_ = date;
@@ -96,7 +117,7 @@ namespace CourseWork
                     user.ChangeReputation(-10);
                 }
                 else user.ChangeReputation(10);
-                user.lendedBooks.Remove(record.book_);
+                user.lendedBooks_.Remove(record.book_);
             }
         }
     }
