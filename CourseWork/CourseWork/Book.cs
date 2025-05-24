@@ -51,10 +51,15 @@ namespace CourseWork
             reservedBy = null;
         }
 
-        public void Lend()
+        public bool Lend(SimpleUser user)
         {
-            isAvailable = false;
-            CancelReservation();
+            if (isAvailable && reservedBy == user)
+            {
+                isAvailable = false;
+                CancelReservation();
+                return true;
+            }
+            else return false;
         }
 
         public void Return()
