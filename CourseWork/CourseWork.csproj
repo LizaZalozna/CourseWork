@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2612" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\library_logo.png" />
+    <EmbeddedResource Include="Resources\Images\library_logo.png" />
+  </ItemGroup>
+</Project> 
