@@ -17,7 +17,6 @@ namespace CourseWork.Views
                 await DisplayAlert("Помилка", "Будь ласка, заповніть всі поля", "OK");
                 return;
             }
-
             try
             {
                 await Application.Current.MainPage.DisplayAlert("Завантаження", "Виконується вхід...", "OK");
@@ -27,18 +26,6 @@ namespace CourseWork.Views
             {
                 await DisplayAlert("Помилка", "Помилка при вході: " + ex.Message, "OK");
             }
-        }
-
-        private async void OnForgotPasswordTapped(object sender, EventArgs e)
-        {
-            await DisplayAlert("Відновлення паролю", 
-                "Функція відновлення паролю буде доступна незабаром", "OK");
-        }
-
-        private async void OnRegisterTapped(object sender, EventArgs e)
-        {
-            await DisplayAlert("Реєстрація", 
-                "Функція реєстрації буде доступна незабаром", "OK");
         }
     }
 } 

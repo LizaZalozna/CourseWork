@@ -1,8 +1,8 @@
 ﻿using System;
 namespace CourseWork
 {
-	public class Book
-	{
+    public class Book
+    {
         string fullNameOfAutor;
         string nameOfBook;
         BookGenre.LiteraryGenre genre;
@@ -32,6 +32,29 @@ namespace CourseWork
             this.genre = genre;
             this.isAvailable = true;
             this.isReserved = false;
+        }
+
+        public BookDTO ToDTO()
+        {
+            return new BookDTO()
+            {
+                FullNameOfAutor = fullNameOfAutor,
+                NameOfBook = nameOfBook,
+                Genre = genre,
+                IsAvailable = isAvailable,
+                IsReserved = isReserved,
+                ReservedBy = reservedBy
+            };
+        }
+
+        public Book(BookDTO dto)
+        {
+            this.fullNameOfAutor = dto.FullNameOfAutor;
+            this.nameOfBook = dto.NameOfBook;
+            this.genre = dto.Genre;
+            this.isAvailable = dto.IsAvailable;
+            this.isReserved = dto.IsReserved;
+            this.reservedBy = dto.ReservedBy;
         }
 
         public bool Reserve(SimpleUser user)
