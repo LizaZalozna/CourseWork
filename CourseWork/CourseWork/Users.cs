@@ -5,9 +5,27 @@ namespace CourseWork
 {
     public class User
     {
-        string fullName;
-        string login;
-        string password;
+        protected string fullName;
+        protected string login;
+        protected string password;
+
+        public User(UserDTO dto)
+        {
+            fullName = dto.FullName;
+            login = dto.Login;
+            password = dto.Password;
+        }
+
+        public virtual UserDTO ToDTO()
+        {
+            return new UserDTO
+            {
+                FullName = fullName,
+                Login = login,
+                Password = password,
+                Role = "User"
+            };
+        }
 
         public User(string fullName, string login, string password)
         {
@@ -20,6 +38,15 @@ namespace CourseWork
     public class Admin : User
     {
         public Admin(string fullName, string login, string password) : base(fullName, login, password) { }
+
+        public override UserDTO ToDTO()
+        {
+            var dto = base.ToDTO();
+            dto.Role = "Admin";
+            return dto;
+        }
+
+        public Admin(UserDTO dto) : base(dto) { }
 
         public void AddBook(Book book)
         {
@@ -67,6 +94,35 @@ namespace CourseWork
             reputation = 100;
         }
 
+        public override UserDTO ToDTO()
+        {
+            return new UserDTO
+            {
+                FullName = fullName,
+                Login = login,
+                Password = password,
+                Role = "SimpleUser",
+                SimpleUserDetails = new SimpleUserData
+                {
+                    Reputation = reputation,
+                    ReservedBooks = reservedBooks,
+                    Reservations = reservations,
+                    LendedBooks = lendedBooks,
+                    Lendings = lendings
+                }
+            };
+        }
+
+        public SimpleUser(UserDTO dto) : base(dto)
+        {
+            var details = dto.SimpleUserDetails ?? new SimpleUserData();
+            this.reputation = details.Reputation;
+            this.reservedBooks = details.ReservedBooks;
+            this.reservations = details.Reservations;
+            this.lendedBooks = details.LendedBooks;
+            this.lendings = details.Lendings;
+        }
+
         public void ReserveBook(Book book, DateTime date)
         {
             if (reputation_ > 50)
@@ -87,6 +143,15 @@ namespace CourseWork
     public class Librarian : User
     {
         public Librarian(string fullName, string login, string password) : base(fullName, login, password) { }
+
+        public override UserDTO ToDTO()
+        {
+            var dto = base.ToDTO();
+            dto.Role = "Librarian";
+            return dto;
+        }
+
+        public Librarian(UserDTO dto) : base(dto) { }
 
         public bool LendBook(Book book, SimpleUser user, DateTime date)
         {

@@ -23,6 +23,17 @@ namespace CourseWork
                     throw new ArgumentException("Unknown user type");
             }
         }
+
+        public static User CreateUser(UserDTO dto)
+        {
+            return dto.Role switch
+            {
+                "Admin" => new Admin(dto),
+                "Librarian" => new Librarian(dto),
+                "SimpleUser" => new SimpleUser(dto),
+                _ => new User(dto)
+            };
+        }
     }
 }
 
