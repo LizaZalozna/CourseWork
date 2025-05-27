@@ -9,4 +9,3 @@ namespace CourseWork
         public List<UserDTO> Users { get; set; }
     }
 }
-

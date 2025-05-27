@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CourseWork
 {
@@ -105,22 +106,22 @@ namespace CourseWork
                 SimpleUserDetails = new SimpleUserData
                 {
                     Reputation = reputation,
-                    ReservedBooks = reservedBooks,
-                    Reservations = reservations,
-                    LendedBooks = lendedBooks,
-                    Lendings = lendings
+                    ReservedBooks = reservedBooks.Select(book => book.ToDTO()).ToList(),
+                    Reservations = reservations.Select(record => record.ToDTO()).ToList(),
+                    LendedBooks = lendedBooks.Select(book => book.ToDTO()).ToList(),
+                    Lendings = lendings.Select(record => record.ToDTO()).ToList()
                 }
             };
         }
 
         public SimpleUser(UserDTO dto) : base(dto)
         {
-            var details = dto.SimpleUserDetails ?? new SimpleUserData();
+            var details = dto.SimpleUserDetails;
             this.reputation = details.Reputation;
-            this.reservedBooks = details.ReservedBooks;
-            this.reservations = details.Reservations;
-            this.lendedBooks = details.LendedBooks;
-            this.lendings = details.Lendings;
+            this.reservedBooks = details.ReservedBooks.Select(bookdto => new Book(bookdto)).ToList();
+            this.reservations = details.Reservations.Select(recorddto => RecordFactory.CreateRecord(recorddto) as ReservationRecord).ToList();
+            this.lendedBooks = details.LendedBooks.Select(bookdto => new Book(bookdto)).ToList();
+            this.lendings = details.Lendings.Select(recorddto => RecordFactory.CreateRecord(recorddto) as LendingRecord).ToList();
         }
 
         public void ReserveBook(Book book, DateTime date)

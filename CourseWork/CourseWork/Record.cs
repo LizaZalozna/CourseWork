@@ -5,8 +5,7 @@ namespace CourseWork
     {
         Book book;
         DateTime lendDate;
-        DateTime returnDate;
-
+        DateTime? returnDate;
         public Book book_
         {
             get { return book; }
@@ -19,7 +18,7 @@ namespace CourseWork
 
         public DateTime returnDate_
         {
-            get { return returnDate; }
+            get { return (DateTime)returnDate; }
             set
             {
                 if (value >= lendDate) returnDate = value;
@@ -31,6 +30,27 @@ namespace CourseWork
         {
             this.book = book;
             this.lendDate = lendDate;
+        }
+
+        public LendingRecord(RecordDTO dto)
+        {
+            this.book = new Book(dto.Book);
+            this.lendDate = dto.LendingRecordData.LendDate;
+            this.returnDate = dto.LendingRecordData.ReturnDate;
+        }
+
+        public RecordDTO ToDTO()
+        {
+            return new RecordDTO
+            {
+                Book = book.ToDTO(),
+                RecordType = "Lending",
+                LendingRecordData = new LendingRecordData
+                {
+                    LendDate = lendDate,
+                    ReturnDate=returnDate
+                }
+            };
         }
     }
 
@@ -53,6 +73,25 @@ namespace CourseWork
         {
             this.book = book;
             this.reservationDate = reservationDate;
+        }
+
+        public ReservationRecord(RecordDTO dto)
+        {
+            this.book = new Book(dto.Book);
+            this.reservationDate = dto.ReservationRecordData.ReservationDate;
+        }
+
+        public RecordDTO ToDTO()
+        {
+            return new RecordDTO
+            {
+                Book = book.ToDTO(),
+                RecordType = "Reservation",
+                ReservationRecordData = new ReservationRecordData
+                {
+                    ReservationDate = reservationDate
+                }
+            };
         }
     }
 }
