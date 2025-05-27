@@ -16,10 +16,10 @@ namespace CourseWork
     public class SimpleUserData
     {
         public int Reputation { get; set; }
-        public List<Book> ReservedBooks { get; set; } = new();
-        public List<ReservationRecord> Reservations { get; set; } = new();
-        public List<Book> LendedBooks { get; set; } = new();
-        public List<LendingRecord> Lendings { get; set; } = new();
+        public List<Book> ReservedBooks { get; set; } 
+        public List<ReservationRecord> Reservations { get; set; } 
+        public List<Book> LendedBooks { get; set; } 
+        public List<LendingRecord> Lendings { get; set; } 
     }
 
 }

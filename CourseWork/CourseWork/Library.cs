@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CourseWork
 {
@@ -10,6 +11,21 @@ namespace CourseWork
         List<User> users;
 
         private Library() { }
+
+        public Library(LibraryDTO dto)
+        {
+            books = dto.Books.Select(book => new Book(book)).ToList();
+            users = dto.Users.Select(user => UserFactory.CreateUser(user)).ToList();
+        }
+
+        public LibraryDTO ToDTO()
+        {
+            return new LibraryDTO
+            {
+                Books = books.Select(book => book.ToDTO()).ToList(),
+                Users = users.Select(user => user.ToDTO()).ToList()
+            };
+        }
 
         public static Library Instance
         {
