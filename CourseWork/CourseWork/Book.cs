@@ -8,7 +8,7 @@ namespace CourseWork
         BookGenre.LiteraryGenre genre;
         bool isAvailable;
         bool isReserved;
-        SimpleUser reservedBy;
+        string reservedByLogin;
 
         public bool isAvailable_
         {
@@ -20,9 +20,9 @@ namespace CourseWork
             get { return isReserved; }
         }
 
-        public SimpleUser reservedBy_
+        public string reservedByLogin_
         {
-            get { return reservedBy; }
+            get { return reservedByLogin; }
         }
 
         public Book(string fullName, string nameOfBook, BookGenre.LiteraryGenre genre)
@@ -43,7 +43,7 @@ namespace CourseWork
                 Genre = genre,
                 IsAvailable = isAvailable,
                 IsReserved = isReserved,
-                ReservedBy = reservedBy
+                ReservedByLogin = reservedByLogin
             };
         }
 
@@ -54,7 +54,7 @@ namespace CourseWork
             this.genre = dto.Genre;
             this.isAvailable = dto.IsAvailable;
             this.isReserved = dto.IsReserved;
-            this.reservedBy = dto.ReservedBy;
+            this.reservedByLogin = dto.ReservedByLogin;
         }
 
         public bool Reserve(SimpleUser user)
@@ -62,7 +62,7 @@ namespace CourseWork
             if (isAvailable && !isReserved)
             {
                 isReserved = true;
-                reservedBy = user;
+                reservedByLogin = user.login_;
                 return true;
             }
             return false;
@@ -71,12 +71,12 @@ namespace CourseWork
         public void CancelReservation()
         {
             isReserved = false;
-            reservedBy = null;
+            reservedByLogin = "";
         }
 
         public bool Lend(SimpleUser user)
         {
-            if (isAvailable && reservedBy == user)
+            if (isAvailable && reservedByLogin == user.login_)
             {
                 isAvailable = false;
                 CancelReservation();

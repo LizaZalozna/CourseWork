@@ -10,6 +10,11 @@ namespace CourseWork
         protected string login;
         protected string password;
 
+        public string login_
+        {
+            get { return login; }
+        }
+
         public User(UserDTO dto)
         {
             fullName = dto.FullName;

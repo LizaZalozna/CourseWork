@@ -8,7 +8,6 @@ namespace CourseWork
         public BookGenre.LiteraryGenre Genre { get; set; }
         public bool IsAvailable { get; set; }
         public bool IsReserved { get; set; }
-        public SimpleUser ReservedBy { get; set; }
+        public string ReservedByLogin { get; set; }
     }
 }
-
