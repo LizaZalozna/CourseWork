@@ -9,18 +9,14 @@ namespace CourseWork.Views
     public partial class ManageBooksPage : ContentPage
     {
         private ObservableCollection<BookDTO> books;
-        private readonly string libraryPath;
+        private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
 
         public ManageBooksPage()
         {
             InitializeComponent();
-            libraryPath = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName, "library.xml");
             books = new ObservableCollection<BookDTO>();
             LoadBooks();
-            GenrePicker.ItemsSource = Enum.GetValues(typeof(BookGenre.LiteraryGenre))
-                .Cast<BookGenre.LiteraryGenre>()
-                .Select(g => g.ToString())
-                .ToList();
+            GenrePicker.ItemsSource = Enum.GetNames(typeof(BookGenre.LiteraryGenre));
             BooksListView.ItemsSource = books;
         }
 

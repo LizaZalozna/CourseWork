@@ -20,5 +20,8 @@ namespace CourseWork
         [XmlArray("Users")]
         [XmlArrayItem("UserDTO")]
         public List<UserDTO> Users { get; set; }
+
+        [XmlArrayItem("SettingsDTO")]
+        public SettingsDTO Settings { get; set; }
     }
 }

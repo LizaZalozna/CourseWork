@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CourseWork.Views.ManageBooksPage"
-             Title="Управління бібліотекарями"
+             Title="Управління книгами"
              BackgroundColor="White">
     
     <ContentPage.Resources>
@@ -27,6 +27,11 @@
                 <Setter Property="LineBreakMode" Value="NoWrap"/>
             </Style>
 
+            <Style x:Key="ListItemNameOfBookStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -64,6 +69,7 @@
                                Margin="0,0,0,5"/>
                         <Picker x:Name="GenrePicker"
                                 Title="Оберіть жанр"
+                                TextColor="#13A3AD"
                                Margin="0,0,0,10"/>
 
                         <Button Text="Додати книгу"
@@ -80,26 +86,29 @@
                        Margin="0,0,0,10"/>
                 
                 <ListView x:Name="BooksListView"
-                          HasUnevenRows="True"
-                          SelectionMode="None"
-                          SeparatorVisibility="Default"
-                          BackgroundColor="AliceBlue"
-                          SeparatorColor="White">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Padding="10">
-                                    <StackLayout Spacing="4">
-                                        <Label Text="{Binding FullNameOfAutor}"
-                                               Style="{StaticResource ListItemNameStyle}"/>
-                                        <Label Text="{Binding NameOfBook}"
-                                               Style="{StaticResource ListItemNameStyle}"/>
-                                    </StackLayout>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                  HasUnevenRows="True"
+                  SelectionMode="None"
+                  SeparatorVisibility="Default"
+                  BackgroundColor="AliceBlue"
+                  SeparatorColor="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <StackLayout Spacing="4">
+                                    <Label Text="{Binding NameOfBook}"
+                                           Style="{StaticResource ListItemNameStyle}"/>
+                                    <Label Text="{Binding FullNameOfAutor}" 
+                                           Style="{StaticResource ListItemNameOfBookStyle}"/>
+                                    <Label Text="{Binding Genre}" 
+                                           Style="{StaticResource ListItemNameOfBookStyle}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

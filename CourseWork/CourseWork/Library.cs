@@ -9,13 +9,14 @@ namespace CourseWork
         static Library instance;
         List<Book> books;
         List<User> users;
-
+        Settings settings;
         private Library() { }
 
         public Library(LibraryDTO dto)
         {
             books = dto.Books.Select(book => new Book(book)).ToList();
             users = dto.Users.Select(user => UserFactory.CreateUser(user)).ToList();
+            settings = new Settings(dto.Settings);
         }
 
         public LibraryDTO ToDTO()
@@ -23,7 +24,8 @@ namespace CourseWork
             return new LibraryDTO
             {
                 Books = books.Select(book => book.ToDTO()).ToList(),
-                Users = users.Select(user => user.ToDTO()).ToList()
+                Users = users.Select(user => user.ToDTO()).ToList(),
+                Settings = settings.ToDTO()
             };
         }
 
@@ -73,6 +75,55 @@ namespace CourseWork
             }
         }
 
+        public void ReserveBook(SimpleUser user, Book book, DateTime date)
+        {
+            if (user.reputation_ > 50)
+            {
+                if (book.Reserve(user))
+                {
+                    user.reservedBooks_.Add(book);
+                    user.reservations_.Add(new ReservationRecord(book, date));
+                }
+            }
+            else
+            {
+                Console.WriteLine("Недостатня репутація для резервування книги.");
+            }
+        }
+
+        public bool LendBook(Book book, SimpleUser user, DateTime date)
+        {
+            if (user.reputation_ > 0 && book.Lend(user))
+            {
+                user.lendedBooks_.Add(book);
+                user.lendings_.Add(new LendingRecord(book, date));
+                if (book.isReserved_)
+                {
+                    user.ChangeReputation(settings.reservedReputation_);
+                    user.reservedBooks_.Remove(book);
+                    user.reservations_.RemoveAll(r => r.book_ == book);
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public void ReturnBook(Book book, SimpleUser user, DateTime date)
+        {
+            book.Return();
+            LendingRecord record = user.lendings_.Find(r => r.book_ == book);
+            if (record != null)
+            {
+                record.returnDate_ = date;
+                if ((record.returnDate_ - record.lendDate_).TotalDays > settings.returnTime_)
+                {
+                    user.ChangeReputation(-(settings.returnReputation_));
+                }
+                else user.ChangeReputation(settings.returnReputation_);
+                user.lendedBooks_.Remove(record.book_);
+            }
+        }
+
         public void CheckUnclaimedReservations()
         {
             foreach (var user in users)
@@ -81,9 +132,9 @@ namespace CourseWork
                 {
                     foreach (var res in ((SimpleUser)user).reservations_)
                     {
-                        if ((DateTime.Now - res.reservationDate_).TotalDays > 5)
+                        if ((DateTime.Now - res.reservationDate_).TotalDays > settings.reservedTime_)
                         {
-                            ((SimpleUser)user).ChangeReputation(-5);
+                            ((SimpleUser)user).ChangeReputation(-(settings.reservedReputation_));
                             ((SimpleUser)user).reservations_.Remove(res);
                             ((SimpleUser)user).reservedBooks_.Remove(res.book_);
                             res.book_.CancelReservation();

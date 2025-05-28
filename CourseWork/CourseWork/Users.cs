@@ -128,22 +128,6 @@ namespace CourseWork
             this.lendedBooks = details.LendedBooks.Select(bookdto => new Book(bookdto)).ToList();
             this.lendings = details.Lendings.Select(recorddto => RecordFactory.CreateRecord(recorddto) as LendingRecord).ToList();
         }
-
-        public void ReserveBook(Book book, DateTime date)
-        {
-            if (reputation_ > 50)
-            {
-                if (book.Reserve(this))
-                {
-                    reservedBooks.Add(book);
-                    reservations.Add(new ReservationRecord(book, date));
-                }
-            }
-            else
-            {
-                Console.WriteLine("Недостатня репутація для резервування книги.");
-            }
-        }
     }
 
     public class Librarian : User
@@ -158,38 +142,5 @@ namespace CourseWork
         }
 
         public Librarian(UserDTO dto) : base(dto) { }
-
-        public bool LendBook(Book book, SimpleUser user, DateTime date)
-        {
-            if (user.reputation_ > 0 && book.Lend(user))
-            {
-                user.lendedBooks_.Add(book);
-                user.lendings_.Add(new LendingRecord(book, date));
-                if (book.isReserved_)
-                {
-                    user.ChangeReputation(5);
-                    user.reservedBooks_.Remove(book);
-                    user.reservations_.RemoveAll(r => r.book_ == book);
-                }
-                return true;
-            }
-            return false;
-        }
-
-        public void ReturnBook(Book book, SimpleUser user, DateTime date)
-        {
-            book.Return();
-            LendingRecord record = user.lendings_.Find(r => r.book_ == book);
-            if (record != null)
-            {
-                record.returnDate_ = date;
-                if ((record.returnDate_ - record.lendDate_).TotalDays > 30)
-                {
-                    user.ChangeReputation(-10);
-                }
-                else user.ChangeReputation(10);
-                user.lendedBooks_.Remove(record.book_);
-            }
-        }
     }
 }

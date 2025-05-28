@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LibraryDTO xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Books>
     <Book>
-      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
-      <NameOfBook>Нуль днів</NameOfBook>
-      <Genre>DetectiveFiction</Genre>
+      <FullNameOfAutor>Аннетт Марі</FullNameOfAutor>
+      <NameOfBook>Червона зима</NameOfBook>
+      <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
-      <ReservedByLogin>null</ReservedByLogin>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <NameOfBook>Та дівчина</NameOfBook>
+      <Genre>Детектив</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
     </Book>
   </Books>
   <Users>
@@ -24,4 +30,10 @@
       <Role>Librarian</Role>
     </UserDTO>
   </Users>
+  <Settings>
+    <ReservedReputation>6</ReservedReputation>
+    <ReservedTime>3</ReservedTime>
+    <ReturnReputation>9</ReturnReputation>
+    <ReturnTime>2</ReturnTime>
+  </Settings>
 </LibraryDTO>

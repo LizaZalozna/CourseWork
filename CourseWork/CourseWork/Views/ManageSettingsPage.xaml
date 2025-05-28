@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CourseWork.Views.ManageSettingsPage"
+    Title="Управління налаштуваннями"
+    BackgroundColor="White">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="15">
+
+                <Label Text="Поточні налаштування системи" FontSize="24" FontAttributes="Bold" TextColor="#13A3AD" HorizontalOptions="Center" />
+
+                <Label Text="Репутація за бронювання" TextColor="#13A3AD"/>
+                <Entry x:Name="ReservedReputationEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
+
+                <Label Text="Час бронювання (днів)" TextColor="#13A3AD"/>
+                <Entry x:Name="ReservedTimeEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
+
+                <Label Text="Репутація за повернення" TextColor="#13A3AD"/>
+                <Entry x:Name="ReturnReputationEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
+
+                <Label Text="Час повернення (днів)" TextColor="#13A3AD"/>
+                <Entry x:Name="ReturnTimeEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
+
+                <Button Text="Зберегти" BackgroundColor="#13A3AD" TextColor="White" Clicked="OnSaveClicked" HeightRequest="50" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

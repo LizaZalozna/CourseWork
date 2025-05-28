@@ -27,7 +27,7 @@ namespace CourseWork.Views
 
         private async void OnSettingsClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Інформація", "Функція налаштувань системи в розробці", "OK");
+            await Navigation.PushAsync(new ManageSettingsPage());
         }
 
         private async void OnLogoutClicked(object sender, EventArgs e)
