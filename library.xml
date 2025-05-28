@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LibraryDTO xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Books>
+    <Book>
+      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <NameOfBook>Нуль днів</NameOfBook>
+      <Genre>DetectiveFiction</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+      <ReservedByLogin>null</ReservedByLogin>
+    </Book>
+  </Books>
+  <Users>
+    <UserDTO>
+      <FullName>Адміністратор</FullName>
+      <Login>admin</Login>
+      <Password>admin1234</Password>
+      <Role>Admin</Role>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Анастасія Пончикова</FullName>
+      <Login>anas</Login>
+      <Password>memem45</Password>
+      <Role>Librarian</Role>
+    </UserDTO>
+  </Users>
+</LibraryDTO>

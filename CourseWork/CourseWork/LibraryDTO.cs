@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace CourseWork
 {
-    [XmlRoot("Library")]
+    [XmlRoot("LibraryDTO")]
     public class LibraryDTO
     {
         public LibraryDTO()
@@ -18,7 +18,7 @@ namespace CourseWork
         public List<BookDTO> Books { get; set; }
 
         [XmlArray("Users")]
-        [XmlArrayItem("User")]
+        [XmlArrayItem("UserDTO")]
         public List<UserDTO> Users { get; set; }
     }
 }

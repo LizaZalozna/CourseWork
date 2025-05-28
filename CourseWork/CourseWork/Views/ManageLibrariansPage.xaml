@@ -52,6 +52,7 @@
                                Margin="0,0,0,5"/>
                         <Entry x:Name="FullNameEntry"
                                Placeholder="Введіть ім'я та прізвище"
+                               TextColor="#13A3AD"
                                Margin="0,0,0,10"/>
 
                         <Label Text="Логін"
@@ -59,6 +60,7 @@
                                Margin="0,0,0,5"/>
                         <Entry x:Name="UsernameEntry"
                                Placeholder="Введіть логін"
+                               TextColor="#13A3AD"
                                Margin="0,0,0,10"/>
 
                         <Label Text="Пароль"
@@ -73,6 +75,7 @@
                                 Clicked="OnAddLibrarianClicked"
                                 BackgroundColor="#13A3AD"
                                 TextColor="White"
+                                HeightRequest="50"
                                 CornerRadius="0"/>
                     </StackLayout>
                 </Frame>

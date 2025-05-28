@@ -9,6 +9,8 @@ namespace CourseWork.Views
 {
     public partial class LoginPage : ContentPage
     {
+        private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
+
         public LoginPage()
         {
             InitializeComponent();
@@ -24,8 +26,7 @@ namespace CourseWork.Views
 
             try
             {
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "library.xml");
-                LibraryDTO library = Serializer.LoadFromXml<LibraryDTO>(filePath);
+                LibraryDTO library = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
                 var user = library.Users.FirstOrDefault(u =>
                     u.Login == LoginEntry.Text && u.Password == PasswordEntry.Text);
 
@@ -37,7 +38,6 @@ namespace CourseWork.Views
                     {
                         Application.Current.MainPage = new NavigationPage(new AdminPage());
                     }
-                    else Application.Current.MainPage = new NavigationPage(new MainPage());
                 }
                 else
                 {

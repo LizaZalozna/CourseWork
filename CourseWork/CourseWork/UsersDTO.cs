@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace CourseWork
 {
-    [XmlType("User")]
+    [XmlType("UserDTO")]
     public class UserDTO
     {
         [XmlElement("FullName")]

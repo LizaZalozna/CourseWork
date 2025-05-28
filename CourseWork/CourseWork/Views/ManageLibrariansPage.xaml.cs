@@ -9,12 +9,12 @@ namespace CourseWork.Views
     public partial class ManageLibrariansPage : ContentPage
     {
         private ObservableCollection<UserDTO> librarians;
-        private string libraryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "library.xml");
+        private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
 
         public ManageLibrariansPage()
         {
-            InitializeComponent();
             librarians = new ObservableCollection<UserDTO>();
+            InitializeComponent();
             LoadLibrarians();
             LibrariansListView.ItemsSource = librarians;
         }
@@ -74,7 +74,6 @@ namespace CourseWork.Views
 
                 library.Users.Add(newLibrarian);
                 Serializer.SaveToXml(library, libraryPath);
-
                 FullNameEntry.Text = string.Empty;
                 UsernameEntry.Text = string.Empty;
                 PasswordEntry.Text = string.Empty;
