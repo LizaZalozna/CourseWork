@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CourseWork.Views.AdminPage"
+             Title="Панель адміністратора"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MenuButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#13A3AD"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            
+            <Style x:Key="HeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <!-- Заголовок -->
+                <Label Text="Вітаємо, Адміністратор!"
+
+                       Style="{StaticResource HeaderLabelStyle}"/>
+
+                <!-- Статистика -->
+                <Frame BorderColor="#13A3AD"
+                       CornerRadius="0"
+                       HasShadow="False"
+                       Padding="15">
+                    <StackLayout>
+                        <Label Text="Статистика системи"
+                               TextColor="#13A3AD"
+                               FontSize="20"/>
+                        <Label x:Name="UsersCountLabel"
+                               TextColor="#13A3AD"/>
+                        <Label x:Name="BooksCountLabel"
+                               TextColor="#13A3AD"/>
+                        <Label x:Name="LibrariansCountLabel"
+                               TextColor="#13A3AD"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Кнопки управління -->
+                <Button Text="Управління користувачами"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnManageUsersClicked"/>
+                
+                <Button Text="Управління книгами"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnManageBooksClicked"/>
+                
+                <Button Text="Управління бібліотекарями"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnManageLibrariansClicked"/>
+                
+                <Button Text="Перегляд звітів"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnViewReportsClicked"/>
+                
+                <Button Text="Налаштування системи"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnSettingsClicked"/>
+
+                <!-- Кнопка виходу -->
+                <Button Text="Вийти"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        CornerRadius="0"
+                        HeightRequest="50"
+                        Margin="0,30,0,0"
+                        Clicked="OnLogoutClicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage> 

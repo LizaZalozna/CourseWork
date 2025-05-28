@@ -1,4 +1,8 @@
 using System;
+using System.IO;
+using System.Linq;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using Xamarin.Forms;
 
 namespace CourseWork.Views
@@ -12,20 +16,43 @@ namespace CourseWork.Views
 
         private async void OnLoginClicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(EmailEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
+            if (string.IsNullOrWhiteSpace(LoginEntry.Text) || string.IsNullOrWhiteSpace(PasswordEntry.Text))
             {
-                await DisplayAlert("Помилка", "Будь ласка, заповніть всі поля", "OK");
+                ShowError("Будь ласка, заповніть всі поля");
                 return;
             }
+
             try
             {
-                await Application.Current.MainPage.DisplayAlert("Завантаження", "Виконується вхід...", "OK");
-                Application.Current.MainPage = new NavigationPage(new MainPage());
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "library.xml");
+                LibraryDTO library = Serializer.LoadFromXml<LibraryDTO>(filePath);
+                var user = library.Users.FirstOrDefault(u =>
+                    u.Login == LoginEntry.Text && u.Password == PasswordEntry.Text);
+
+                if (user != null)
+                {
+                    string role = user.Role;
+                    await DisplayAlert("Успіх", "Авторизація успішна!", "OK");
+                    if (role.ToLower() == "admin")
+                    {
+                        Application.Current.MainPage = new NavigationPage(new AdminPage());
+                    }
+                    else Application.Current.MainPage = new NavigationPage(new MainPage());
+                }
+                else
+                {
+                    ShowError("Неправильний логін або пароль");
+                }
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Помилка", "Помилка при вході: " + ex.Message, "OK");
+                ShowError($"Помилка при авторизації: {ex.Message}");
             }
         }
+
+        private async void ShowError(string message)
+        {
+            await DisplayAlert("Помилка", message, "OK");
+        }
     }
-} 
+}

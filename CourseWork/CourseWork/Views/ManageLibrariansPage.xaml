@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CourseWork.Views.ManageLibrariansPage"
+             Title="Управління бібліотекарями"
+             BackgroundColor="White">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+            
+            <Style x:Key="FormLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+            
+            <Style x:Key="ListItemNameStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+            
+            <Style x:Key="ListItemLoginStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Frame BorderColor="#13A3AD"
+                       Padding="15" 
+                       Margin="0,0,0,20"
+                       HasShadow="False">
+                    <StackLayout>
+                        <Label Text="Додати нового бібліотекаря"
+                               Style="{StaticResource HeaderLabelStyle}"
+                               Margin="0,0,0,15"/>
+
+                        <Label Text="Ім'я та прізвище"
+                               Style="{StaticResource FormLabelStyle}"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="FullNameEntry"
+                               Placeholder="Введіть ім'я та прізвище"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="Логін"
+                               Style="{StaticResource FormLabelStyle}"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="UsernameEntry"
+                               Placeholder="Введіть логін"
+                               Margin="0,0,0,10"/>
+
+                        <Label Text="Пароль"
+                               Style="{StaticResource FormLabelStyle}"
+                               Margin="0,0,0,5"/>
+                        <Entry x:Name="PasswordEntry"
+                               Placeholder="Введіть пароль"
+                               IsPassword="True"
+                               Margin="0,0,0,10"/>
+
+                        <Button Text="Додати бібліотекаря"
+                                Clicked="OnAddLibrarianClicked"
+                                BackgroundColor="#13A3AD"
+                                TextColor="White"
+                                CornerRadius="0"/>
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="Список бібліотекарів"
+                       Style="{StaticResource HeaderLabelStyle}"
+                       Margin="0,0,0,10"/>
+                
+                <ListView x:Name="LibrariansListView"
+                          HasUnevenRows="True"
+                          SelectionMode="None"
+                          SeparatorVisibility="Default"
+                          BackgroundColor="AliceBlue"
+                          SeparatorColor="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10">
+                                    <StackLayout Spacing="4">
+                                        <Label Text="{Binding FullName}"
+                                               Style="{StaticResource ListItemNameStyle}"/>
+                                        <Label Text="{Binding Login}"
+                                               Style="{StaticResource ListItemLoginStyle}"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage> 
