@@ -29,10 +29,10 @@
                 <Label Text="Вітаємо, Адміністратор!"
 
                        Style="{StaticResource HeaderLabelStyle}"/>
-
+                <StackLayout Padding="20" VerticalOptions="CenterAndExpand">
                 <Button Text="Управління книгами"
                         Style="{StaticResource MenuButtonStyle}"
-                        Clicked="OnManageBooksClicked"/>
+                        Clicked="OnManageBooksClicked" />
                 
                 <Button Text="Управління бібліотекарями"
                         Style="{StaticResource MenuButtonStyle}"
@@ -41,7 +41,7 @@
                 <Button Text="Налаштування системи"
                         Style="{StaticResource MenuButtonStyle}"
                         Clicked="OnSettingsClicked"/>
-
+                    </StackLayout>
                 <Button Text="Вийти"
                         BackgroundColor="Gray"
                         TextColor="White"

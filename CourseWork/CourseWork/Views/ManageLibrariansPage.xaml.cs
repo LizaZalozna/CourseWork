@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace CourseWork.Views
     {
         private ObservableCollection<UserDTO> librarians;
         private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
+        private readonly Admin admin;
 
-        public ManageLibrariansPage()
+        public ManageLibrariansPage(Admin admin)
         {
             librarians = new ObservableCollection<UserDTO>();
+            this.admin = admin;
             InitializeComponent();
             LoadLibrarians();
             LibrariansListView.ItemsSource = librarians;
@@ -54,26 +57,18 @@ namespace CourseWork.Views
 
             try
             {
-                var library = File.Exists(libraryPath)
-                    ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
-                    : new LibraryDTO { Users = new System.Collections.Generic.List<UserDTO>() };
-
-                if (library.Users.Any(u => u.Login == UsernameEntry.Text))
+                LibraryDTO dto = File.Exists(libraryPath)
+                ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
+                : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
+                Library library = new Library(dto);
+                if (dto.Users.Any(u => u.Login == UsernameEntry.Text))
                 {
                     await DisplayAlert("Помилка", "Користувач з таким іменем вже існує", "OK");
                     return;
                 }
-                var newLibrarian = new UserDTO
-                {
-                    Login = UsernameEntry.Text,
-                    Password = PasswordEntry.Text,
-                    FullName = FullNameEntry.Text,
-                    Role = "Librarian",
-                    SimpleUserDetails = null
-                };
-
-                library.Users.Add(newLibrarian);
-                Serializer.SaveToXml(library, libraryPath);
+                
+                library.AddLibrarian(FullNameEntry.Text,UsernameEntry.Text,PasswordEntry.Text, admin);
+                Serializer.SaveToXml(library.ToDTO(), libraryPath);
                 FullNameEntry.Text = string.Empty;
                 UsernameEntry.Text = string.Empty;
                 PasswordEntry.Text = string.Empty;
@@ -84,6 +79,34 @@ namespace CourseWork.Views
             catch (Exception ex)
             {
                 await DisplayAlert("Помилка", $"Помилка додавання бібліотекаря: {ex.Message}", "OK");
+            }
+        }
+
+        private async void LibrariansListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is UserDTO selectedLibrarian)
+            {
+                bool confirm = await DisplayAlert("Підтвердження",
+                    $"Видалити бібліотекаря \"{selectedLibrarian.FullName}\"?", "Так", "Скасувати");
+
+                if (confirm)
+                {
+                    try
+                    {
+                        var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
+                        dto.Users.RemoveAll(u => u.Login == selectedLibrarian.Login && u.Role?.ToLower() == "librarian");
+
+                        Serializer.SaveToXml(dto, libraryPath);
+                        LoadLibrarians();
+
+                        await DisplayAlert("Успіх", "Бібліотекаря видалено", "OK");
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Помилка", $"Не вдалося видалити: {ex.Message}", "OK");
+                    }
+                }
+                ((ListView)sender).SelectedItem = null;
             }
         }
     }

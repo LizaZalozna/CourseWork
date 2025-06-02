@@ -9,10 +9,12 @@ namespace CourseWork.Views
     public partial class AdminPage : ContentPage
     {
         private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
+        private readonly Admin admin;
 
-        public AdminPage()
+        public AdminPage(Admin admin)
         {
             InitializeComponent();
+            this.admin = admin;
         }
 
         private async void OnManageBooksClicked(object sender, EventArgs e)
@@ -22,7 +24,7 @@ namespace CourseWork.Views
 
         private async void OnManageLibrariansClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ManageLibrariansPage());
+            await Navigation.PushAsync(new ManageLibrariansPage(admin));
         }
 
         private async void OnSettingsClicked(object sender, EventArgs e)

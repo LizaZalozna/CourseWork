@@ -87,6 +87,7 @@
                 
                 <ListView x:Name="BooksListView"
                   HasUnevenRows="True"
+                  ItemTapped="BooksListView_ItemTapped"
                   SelectionMode="None"
                   SeparatorVisibility="Default"
                   BackgroundColor="AliceBlue"

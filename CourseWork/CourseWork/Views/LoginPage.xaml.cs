@@ -36,7 +36,7 @@ namespace CourseWork.Views
                     await DisplayAlert("Успіх", "Авторизація успішна!", "OK");
                     if (role.ToLower() == "admin")
                     {
-                        Application.Current.MainPage = new NavigationPage(new AdminPage());
+                        Application.Current.MainPage = new NavigationPage(new AdminPage(new Admin(user)));
                     }
                 }
                 else

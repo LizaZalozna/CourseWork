@@ -80,7 +80,7 @@ namespace CourseWork
 
         public bool Lend(SimpleUser user)
         {
-            if (isAvailable && reservedByLogin == user.login_)
+            if (isAvailable || reservedByLogin == user.login_)
             {
                 isAvailable = false;
                 CancelReservation();

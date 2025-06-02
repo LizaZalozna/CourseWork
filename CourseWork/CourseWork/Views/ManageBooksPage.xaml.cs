@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -55,28 +56,18 @@ namespace CourseWork.Views
 
             try
             {
-                var library = File.Exists(libraryPath)
-                    ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
-                    : new LibraryDTO { Books = new System.Collections.Generic.List<BookDTO>() };
-
-                if (library.Books.Any(b => b.NameOfBook == NameOfBookEntry.Text))
+                LibraryDTO dto = File.Exists(libraryPath)
+                ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
+                : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
+                Library library = new Library(dto);
+                if (dto.Books.Any(b => b.NameOfBook == NameOfBookEntry.Text))
                 {
                     await DisplayAlert("Помилка", "Книга з такою назвою вже існує", "OK");
                     return;
                 }
-                var newBook = new BookDTO
-                {
-                    FullNameOfAutor = FullNameEntry.Text,
-                    NameOfBook = NameOfBookEntry.Text,
-                    Genre = (BookGenre.LiteraryGenre)Enum.Parse(
-                    typeof(BookGenre.LiteraryGenre), GenrePicker.SelectedItem.ToString()),
-                    IsAvailable = true,
-                    IsReserved = false,
-                    ReservedByLogin = null
-                };
-
-                library.Books.Add(newBook);
-                Serializer.SaveToXml(library, libraryPath);
+                library.AddBook(new Book(FullNameEntry.Text, NameOfBookEntry.Text, (BookGenre.LiteraryGenre)Enum.Parse(
+                    typeof(BookGenre.LiteraryGenre), GenrePicker.SelectedItem.ToString())));
+                Serializer.SaveToXml(library.ToDTO(), libraryPath);
                 FullNameEntry.Text = string.Empty;
                 NameOfBookEntry.Text = string.Empty;
                 GenrePicker.SelectedItem = null;
@@ -87,6 +78,34 @@ namespace CourseWork.Views
             catch (Exception ex)
             {
                 await DisplayAlert("Помилка", $"Помилка додавання книги: {ex.Message}", "OK");
+            }
+        }
+
+        private async void BooksListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is BookDTO selectedBook)
+            {
+                bool confirm = await DisplayAlert("Підтвердження",
+                    $"Видалити книгу \"{selectedBook.NameOfBook}\"?", "Так", "Скасувати");
+
+                if (confirm)
+                {
+                    try
+                    {
+                        var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
+                        dto.Books.RemoveAll(b => b.NameOfBook == selectedBook.NameOfBook && b.FullNameOfAutor == selectedBook.FullNameOfAutor);
+
+                        Serializer.SaveToXml(dto, libraryPath);
+                        LoadBooks();
+
+                        await DisplayAlert("Успіх", "Книгу видалено", "OK");
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Помилка", $"Не вдалося видалити: {ex.Message}", "OK");
+                    }
+                }
+                ((ListView)sender).SelectedItem = null;
             }
         }
     }
