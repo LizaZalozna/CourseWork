@@ -38,6 +38,10 @@ namespace CourseWork.Views
                     {
                         Application.Current.MainPage = new NavigationPage(new AdminPage(new Admin(user)));
                     }
+                    else if (role.ToLower() == "librarian")
+                    {
+                        Application.Current.MainPage = new NavigationPage(new LibrarianPage(new Librarian(user)));
+                    }
                 }
                 else
                 {

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CourseWork.Views.LibrarianPage"
+             Title="Панель бібліотекаря"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MenuButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#13A3AD"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+            
+            <Style x:Key="HeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Label x:Name="WelcomeLabel"
+                       Style="{StaticResource HeaderLabelStyle}"/>
+                <StackLayout Padding="20" VerticalOptions="CenterAndExpand">
+                <Button Text="Управління звичайними користувачами"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnManageSimpleUsersClicked" />
+                <Button Text="Видати книгу"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnLendBookClicked"/>
+                <Button Text="Повернути книгу"
+                        Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnReturnBookClicked"/>
+                    </StackLayout>
+                <Button Text="Вийти"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        CornerRadius="0"
+                        HeightRequest="50"
+                        Margin="0,30,0,0"
+                        Clicked="OnLogoutClicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage> 

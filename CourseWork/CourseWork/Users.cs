@@ -15,6 +15,11 @@ namespace CourseWork
             get { return login; }
         }
 
+        public string fullName_
+        {
+            get { return fullName; }
+        }
+
         public User(UserDTO dto)
         {
             fullName = dto.FullName;
@@ -98,6 +103,10 @@ namespace CourseWork
         public SimpleUser(string fullName, string login, string password) : base(fullName, login, password)
         {
             reputation = 100;
+            reservedBooks = new List<Book>();
+            reservations = new List<ReservationRecord>();
+            lendedBooks = new List<Book>();
+            lendings = new List<LendingRecord>();
         }
 
         public override UserDTO ToDTO()

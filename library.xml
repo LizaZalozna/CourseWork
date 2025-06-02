@@ -9,9 +9,37 @@
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
+      <FullNameOfAutor>Стефані Гарбер</FullNameOfAutor>
+      <NameOfBook>Каравал</NameOfBook>
+      <Genre>Фентезі</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
       <FullNameOfAutor>Рут Веа</FullNameOfAutor>
       <NameOfBook>Та дівчина</NameOfBook>
       <Genre>Детектив</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <NameOfBook>Нуль днів</NameOfBook>
+      <Genre>Детектив</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Стефані Гарбер</FullNameOfAutor>
+      <NameOfBook>Легенда</NameOfBook>
+      <Genre>Фентезі</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Стефані Гарбер</FullNameOfAutor>
+      <NameOfBook>Фінал</NameOfBook>
+      <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
@@ -24,14 +52,27 @@
       <Role>Admin</Role>
     </UserDTO>
     <UserDTO>
-      <FullName>Анастасія Пончикова</FullName>
-      <Login>anas</Login>
-      <Password>memem45</Password>
+      <FullName>Христина Бейкер</FullName>
+      <Login>chris_b</Login>
+      <Password>chris2023</Password>
       <Role>Librarian</Role>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Роман Цюра</FullName>
+      <Login>roman_cc</Login>
+      <Password>amor2091</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
     </UserDTO>
   </Users>
   <Settings>
-    <ReservedReputation>6</ReservedReputation>
+    <ReservedReputation>5</ReservedReputation>
     <ReservedTime>3</ReservedTime>
     <ReturnReputation>9</ReturnReputation>
     <ReturnTime>2</ReturnTime>

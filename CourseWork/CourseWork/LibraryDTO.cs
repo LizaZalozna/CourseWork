@@ -11,6 +11,7 @@ namespace CourseWork
         {
             Books = new List<BookDTO>();
             Users = new List<UserDTO>();
+            Settings = new SettingsDTO();
         }
 
         [XmlArray("Books")]

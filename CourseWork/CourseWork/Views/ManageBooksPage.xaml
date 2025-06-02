@@ -35,7 +35,13 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <ContentPage.Content>
+    <ContentPage.Content>   
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
         <ScrollView>
             <StackLayout Padding="20">
                 <Frame BorderColor="#13A3AD"
@@ -78,39 +84,38 @@
                                 TextColor="White"
                                 HeightRequest="50"
                                 CornerRadius="0"/>
+                                
                     </StackLayout>
                 </Frame>
+            </StackLayout>
+        </ScrollView>
 
-                <Label Text="Список книг"
+        <Label Text="Список книг"
                        Style="{StaticResource HeaderLabelStyle}"
-                       Margin="0,0,0,10"/>
-                
-                <ListView x:Name="BooksListView"
+                       Margin="20,0,0,10" />
+        <ListView Grid.Row="1"
+                  x:Name="BooksListView"
                   HasUnevenRows="True"
                   ItemTapped="BooksListView_ItemTapped"
                   SelectionMode="None"
                   SeparatorVisibility="Default"
                   BackgroundColor="AliceBlue"
                   SeparatorColor="White">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10">
-                                <StackLayout Spacing="4">
-                                    <Label Text="{Binding NameOfBook}"
-                                           Style="{StaticResource ListItemNameStyle}"/>
-                                    <Label Text="{Binding FullNameOfAutor}" 
-                                           Style="{StaticResource ListItemNameOfBookStyle}"/>
-                                    <Label Text="{Binding Genre}" 
-                                           Style="{StaticResource ListItemNameOfBookStyle}"/>
-                                </StackLayout>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Spacing="4">
+                            <Label Text="{Binding NameOfBook}" 
+                                   Style="{StaticResource ListItemNameStyle}" />
+                            <Label Text="{Binding FullNameOfAutor}" 
+                                   Style="{StaticResource ListItemNameOfBookStyle}" />
+                            <Label Text="{Binding Genre}" 
+                                   Style="{StaticResource ListItemNameOfBookStyle}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+   </ContentPage.Content>
 </ContentPage> 

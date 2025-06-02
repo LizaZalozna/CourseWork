@@ -8,16 +8,15 @@ namespace CourseWork.Views
 {	
 	public partial class ManageSettingsPage : ContentPage
 	{
-        private SettingsDTO currentSettings;
         private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
 
         public ManageSettingsPage()
         {
             InitializeComponent();
-            LoadBooks();
+            LoadSettings();
         }
 
-        private void LoadBooks()
+        private void LoadSettings()
         {
             try
             {
@@ -26,11 +25,10 @@ namespace CourseWork.Views
                     var library = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
                     if (library.Settings != null)
                     {
-                        currentSettings = library.Settings;
-                        ReservedTimeEntry.Text = currentSettings.ReservedTime.ToString();
-                        ReservedReputationEntry.Text = currentSettings.ReservedReputation.ToString();
-                        ReturnTimeEntry.Text = currentSettings.ReturnTime.ToString();
-                        ReturnReputationEntry.Text = currentSettings.ReturnReputation.ToString();
+                        ReservedTimeEntry.Text = library.Settings.ReservedTime.ToString();
+                        ReservedReputationEntry.Text = library.Settings.ReservedReputation.ToString();
+                        ReturnTimeEntry.Text = library.Settings.ReturnTime.ToString();
+                        ReturnReputationEntry.Text = library.Settings.ReturnReputation.ToString();
                     }
                 }
             }
@@ -64,12 +62,16 @@ namespace CourseWork.Views
                     ReturnReputation = int.Parse(ReturnReputationEntry.Text),
                     ReturnTime = int.Parse(ReturnTimeEntry.Text)
                 };
-                if (library.Settings != newSettings)
+                if (!(library.Settings.ReservedReputation == newSettings.ReservedReputation &&
+                    library.Settings.ReservedTime == newSettings.ReservedTime &&
+                    library.Settings.ReturnReputation == newSettings.ReturnReputation &&
+                    library.Settings.ReturnTime == newSettings.ReturnTime)) 
                 {
                     library.Settings = newSettings;
                     Serializer.SaveToXml(library, libraryPath);
                     await DisplayAlert("Успіх", "Налаштування змінено", "OK");
                 }
+                LoadSettings();
             }
             catch (Exception ex)
             {

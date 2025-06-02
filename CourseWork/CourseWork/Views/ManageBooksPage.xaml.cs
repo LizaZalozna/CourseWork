@@ -98,7 +98,7 @@ namespace CourseWork.Views
                         Serializer.SaveToXml(dto, libraryPath);
                         LoadBooks();
 
-                        await DisplayAlert("Успіх", "Книгу видалено", "OK");
+                        await DisplayAlert("Успіх", $"Книгу \"{selectedBook.NameOfBook}\" видалено", "OK");
                     }
                     catch (Exception ex)
                     {
