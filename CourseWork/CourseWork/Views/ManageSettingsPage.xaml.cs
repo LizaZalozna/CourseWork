@@ -22,15 +22,15 @@ namespace CourseWork.Views
             {
                 if (File.Exists(libraryPath))
                 {
-                    var library = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
-                    if (library.Settings != null)
-                    {
-                        ReservedTimeEntry.Text = library.Settings.ReservedTime.ToString();
-                        ReservedReputationEntry.Text = library.Settings.ReservedReputation.ToString();
-                        ReturnTimeEntry.Text = library.Settings.ReturnTime.ToString();
-                        ReturnReputationEntry.Text = library.Settings.ReturnReputation.ToString();
-                    }
+                    var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
+                    Library.Initialize(dto);
                 }
+
+                var library = Library.Instance;
+                ReservedTimeEntry.Text = library.ToDTO().Settings.ReservedTime.ToString();
+                ReservedReputationEntry.Text = library.ToDTO().Settings.ReservedReputation.ToString();
+                ReturnTimeEntry.Text = library.ToDTO().Settings.ReturnTime.ToString();
+                ReturnReputationEntry.Text = library.ToDTO().Settings.ReturnReputation.ToString();
             }
             catch (Exception ex)
             {
@@ -51,24 +51,20 @@ namespace CourseWork.Views
 
             try
             {
-                var library = File.Exists(libraryPath)
-                    ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
-                    : new LibraryDTO {};
+                LibraryDTO dto = File.Exists(libraryPath)
+                ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
+                : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
+                Library library = Library.Initialize(dto);
 
-                var newSettings = new SettingsDTO
+
+                if (!(dto.Settings.ReservedReputation == int.Parse(ReservedReputationEntry.Text) &&
+                    dto.Settings.ReservedTime == int.Parse(ReservedTimeEntry.Text) &&
+                    dto.Settings.ReturnReputation == int.Parse(ReturnReputationEntry.Text) &&
+                    dto.Settings.ReturnTime == int.Parse(ReturnTimeEntry.Text))) 
                 {
-                    ReservedReputation = int.Parse(ReservedReputationEntry.Text),
-                    ReservedTime = int.Parse(ReservedTimeEntry.Text),
-                    ReturnReputation = int.Parse(ReturnReputationEntry.Text),
-                    ReturnTime = int.Parse(ReturnTimeEntry.Text)
-                };
-                if (!(library.Settings.ReservedReputation == newSettings.ReservedReputation &&
-                    library.Settings.ReservedTime == newSettings.ReservedTime &&
-                    library.Settings.ReturnReputation == newSettings.ReturnReputation &&
-                    library.Settings.ReturnTime == newSettings.ReturnTime)) 
-                {
-                    library.Settings = newSettings;
-                    Serializer.SaveToXml(library, libraryPath);
+                    library.ChangeSettings(int.Parse(ReservedReputationEntry.Text), int.Parse(ReservedTimeEntry.Text),
+                    int.Parse(ReturnReputationEntry.Text), int.Parse(ReturnTimeEntry.Text));
+                    Serializer.SaveToXml(library.ToDTO(), libraryPath);
                     await DisplayAlert("Успіх", "Налаштування змінено", "OK");
                 }
                 LoadSettings();

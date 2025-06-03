@@ -9,8 +9,15 @@
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Стефані Гарбер</FullNameOfAutor>
-      <NameOfBook>Каравал</NameOfBook>
+      <FullNameOfAutor>Аннетт Марі</FullNameOfAutor>
+      <NameOfBook>Темна буря</NameOfBook>
+      <Genre>Фентезі</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Аннетт Марі</FullNameOfAutor>
+      <NameOfBook>Безсмертний вогонь</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
@@ -30,16 +37,156 @@
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Стефані Гарбер</FullNameOfAutor>
-      <NameOfBook>Легенда</NameOfBook>
+      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <NameOfBook>Одне за одним</NameOfBook>
+      <Genre>Детектив</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Метью Блейк</FullNameOfAutor>
+      <NameOfBook>Анна О</NameOfBook>
+      <Genre>Детектив</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Тесс Ґеррітсен</FullNameOfAutor>
+      <NameOfBook>Сад кісток</NameOfBook>
+      <Genre>Жахи</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Керолайн Кепнес</FullNameOfAutor>
+      <NameOfBook>Ти</NameOfBook>
+      <Genre>Жахи</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Анастасія Нікуліна</FullNameOfAutor>
+      <NameOfBook>Завірюха</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Стефані Гарбер</FullNameOfAutor>
-      <NameOfBook>Фінал</NameOfBook>
+      <FullNameOfAutor>Елізабет Лім</FullNameOfAutor>
+      <NameOfBook>Шість багряних журавлів</NameOfBook>
       <Genre>Фентезі</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Елізабет Лім</FullNameOfAutor>
+      <NameOfBook>Обіцянка дракона</NameOfBook>
+      <Genre>Фентезі</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Стівен Кінг</FullNameOfAutor>
+      <NameOfBook>Воно</NameOfBook>
+      <Genre>Жахи</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Стівен Кінг</FullNameOfAutor>
+      <NameOfBook>Мертва зона</NameOfBook>
+      <Genre>Жахи</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Джейсон Рекулак</FullNameOfAutor>
+      <NameOfBook>Приховані малюнки</NameOfBook>
+      <Genre>Жахи</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Алі Гейзелвуд</FullNameOfAutor>
+      <NameOfBook>Шах і мат</NameOfBook>
+      <Genre>Романтика</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Крістіна Лорен</FullNameOfAutor>
+      <NameOfBook>Формула спорідненої душі</NameOfBook>
+      <Genre>Романтика</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Медді Довсон</FullNameOfAutor>
+      <NameOfBook>Сватання для початківців</NameOfBook>
+      <Genre>Романтика</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Медді Довсон</FullNameOfAutor>
+      <NameOfBook>Щаслива катастрофа</NameOfBook>
+      <Genre>Романтика</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Мін Джін Лі</FullNameOfAutor>
+      <NameOfBook>Пачінко</NameOfBook>
+      <Genre>Історичний</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Емі Гармон</FullNameOfAutor>
+      <NameOfBook>Що знає вітер</NameOfBook>
+      <Genre>Історичний</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Енн Петчетт</FullNameOfAutor>
+      <NameOfBook>Голландський дім</NameOfBook>
+      <Genre>Історичний</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Едвард Резерфорд</FullNameOfAutor>
+      <NameOfBook>Лондон</NameOfBook>
+      <Genre>Історичний</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Кейвін Льюїс</FullNameOfAutor>
+      <NameOfBook>Гамбіт крадіїв</NameOfBook>
+      <Genre>Пригоди</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Стівен Кінг</FullNameOfAutor>
+      <NameOfBook>Казка</NameOfBook>
+      <Genre>Пригоди</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Дженніфер Лінн Барнс</FullNameOfAutor>
+      <NameOfBook>Ігри спадкоємців</NameOfBook>
+      <Genre>Пригоди</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
+    <Book>
+      <FullNameOfAutor>Іван Франко</FullNameOfAutor>
+      <NameOfBook>Захар Беркут</NameOfBook>
+      <Genre>Пригоди</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
@@ -74,7 +221,7 @@
   <Settings>
     <ReservedReputation>5</ReservedReputation>
     <ReservedTime>3</ReservedTime>
-    <ReturnReputation>9</ReturnReputation>
-    <ReturnTime>2</ReturnTime>
+    <ReturnReputation>10</ReturnReputation>
+    <ReturnTime>10</ReturnTime>
   </Settings>
 </LibraryDTO>

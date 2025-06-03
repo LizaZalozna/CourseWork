@@ -28,15 +28,18 @@ namespace CourseWork.Views
             {
                 if (File.Exists(libraryPath))
                 {
-                    var library = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
-                    var librarianUsers = library.Users
-                        .Where(u => u.Role?.ToLower() == "librarian");
+                    var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
+                    Library.Initialize(dto);
+                }
 
-                    librarians.Clear();
-                    foreach (var librarian in librarianUsers)
-                    {
-                        librarians.Add(librarian);
-                    }
+                var library = Library.Instance;
+                var librarianUsers = library.ToDTO().Users
+                    .Where(u => u.Role?.ToLower() == "librarian");
+
+                librarians.Clear();
+                foreach (var librarian in librarianUsers)
+                {
+                    librarians.Add(librarian);
                 }
             }
             catch (Exception ex)
@@ -60,14 +63,14 @@ namespace CourseWork.Views
                 LibraryDTO dto = File.Exists(libraryPath)
                 ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
                 : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
-                Library library = new Library(dto);
+                Library library = Library.Initialize(dto);
                 if (dto.Users.Any(u => u.Login == UsernameEntry.Text))
                 {
                     await DisplayAlert("Помилка", "Користувач з таким іменем вже існує", "OK");
                     return;
                 }
-                
-                library.AddLibrarian(FullNameEntry.Text,UsernameEntry.Text,PasswordEntry.Text, admin);
+
+                library.AddLibrarian(FullNameEntry.Text, UsernameEntry.Text, PasswordEntry.Text, admin);
                 Serializer.SaveToXml(library.ToDTO(), libraryPath);
                 FullNameEntry.Text = string.Empty;
                 UsernameEntry.Text = string.Empty;
@@ -93,13 +96,17 @@ namespace CourseWork.Views
                 {
                     try
                     {
-                        var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
-                        dto.Users.RemoveAll(u => u.Login == selectedLibrarian.Login && u.Role?.ToLower() == "librarian");
+                        var library = Library.Instance;
+                        var librarianToRemove = library.ToDTO().Users.FirstOrDefault(u =>
+                            u.Role?.ToLower() == "librarian" && u.Login == selectedLibrarian.Login);
 
-                        Serializer.SaveToXml(dto, libraryPath);
-                        LoadLibrarians();
-
-                        await DisplayAlert("Успіх", "Бібліотекаря видалено", "OK");
+                        if (librarianToRemove != null)
+                        {
+                            library.RemoveLibrarian(new Librarian(librarianToRemove));
+                            Serializer.SaveToXml(library.ToDTO(), libraryPath);
+                            LoadLibrarians();
+                            await DisplayAlert("Успіх", "Бібліотекаря видалено", "OK");
+                        }
                     }
                     catch (Exception ex)
                     {

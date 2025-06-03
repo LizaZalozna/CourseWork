@@ -10,9 +10,14 @@ namespace CourseWork
         List<Book> books;
         List<User> users;
         Settings settings;
-        private Library() { }
+        private Library()
+        {
+            books = new List<Book>();
+            users = new List<User>();
+            settings = new Settings(0,0,0,0);
+        }
 
-        public Library(LibraryDTO dto)
+        private Library(LibraryDTO dto)
         {
             books = dto.Books.Select(book => new Book(book)).ToList();
             users = dto.Users.Select(user => UserFactory.CreateUser(user)).ToList();
@@ -39,12 +44,24 @@ namespace CourseWork
             }
         }
 
+        public static Library Initialize(LibraryDTO dto)
+        {
+            if (instance == null)
+                instance = new Library(dto);
+            return instance;
+        }
+
         public void AddBook(Book book)
         {
             if (!books.Contains(book))
             {
                 books.Add(book);
             }
+        }
+
+        public void RemoveBook(Book book)
+        {
+            books.RemoveAll(b => b.nameOfBook_ == book.nameOfBook_ && b.fullNameOfAutor_ == book.fullNameOfAutor_);
         }
 
         public bool AddSimpleUser(string fullName, string login, string password, Librarian librarian)
@@ -61,6 +78,11 @@ namespace CourseWork
             }
         }
 
+        public void RemoveSimpleUser(SimpleUser simpleUser)
+        {
+            users.RemoveAll(u => u.login_ == simpleUser.login_);
+        }
+
         public bool AddLibrarian(string fullName, string login, string password, Admin admin)
         {
             try
@@ -73,6 +95,16 @@ namespace CourseWork
             {
                 return false;
             }
+        }
+
+        public void RemoveLibrarian(Librarian librarian)
+        {
+            users.RemoveAll(u => u.login_ == librarian.login_);
+        }
+
+        public void ChangeSettings(int rR, int rT, int retR, int retT)
+        {
+            settings = new Settings(rR, rT, retR, retT);
         }
 
         public void ReserveBook(SimpleUser user, Book book, DateTime date)

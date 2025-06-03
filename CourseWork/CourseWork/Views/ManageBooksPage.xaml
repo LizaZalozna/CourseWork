@@ -42,7 +42,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ScrollView>
+        <ScrollView Grid.Row="0">
             <StackLayout Padding="20">
                 <Frame BorderColor="#13A3AD"
                        Padding="15" 
@@ -89,11 +89,11 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
-
+        <StackLayout Grid.Row="1">
         <Label Text="Список книг"
                        Style="{StaticResource HeaderLabelStyle}"
                        Margin="20,0,0,10" />
-        <ListView Grid.Row="1"
+        <ListView 
                   x:Name="BooksListView"
                   HasUnevenRows="True"
                   ItemTapped="BooksListView_ItemTapped"
@@ -116,6 +116,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        </StackLayout>
     </Grid>
    </ContentPage.Content>
 </ContentPage> 

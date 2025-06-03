@@ -27,15 +27,17 @@ namespace CourseWork.Views
             {
                 if (File.Exists(libraryPath))
                 {
-                    var library = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
-                    if (library.Books != null)
-                    {
-                        books.Clear();
-                        foreach (var book in library.Books)
-                        {
-                            books.Add(book);
-                        }
-                    }
+                    var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
+                    Library.Initialize(dto); 
+                }
+
+                var library = Library.Instance;
+                var currentBooks = library.ToDTO().Books;
+
+                books.Clear();
+                foreach (var book in currentBooks)
+                {
+                    books.Add(book);
                 }
             }
             catch (Exception ex)
@@ -44,11 +46,12 @@ namespace CourseWork.Views
             }
         }
 
+
         private async void OnAddBookClicked(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(FullNameEntry.Text) ||
                 string.IsNullOrWhiteSpace(NameOfBookEntry.Text) ||
-                GenrePicker.SelectedItem == null) 
+                GenrePicker.SelectedItem == null)
             {
                 await DisplayAlert("Помилка", "Будь ласка, заповніть всі поля", "OK");
                 return;
@@ -59,8 +62,8 @@ namespace CourseWork.Views
                 LibraryDTO dto = File.Exists(libraryPath)
                 ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
                 : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
-                Library library = new Library(dto);
-                if (dto.Books.Any(b => b.NameOfBook == NameOfBookEntry.Text))
+                Library library = Library.Initialize(dto);
+                if (dto.Books.Any(b => b.NameOfBook == NameOfBookEntry.Text && b.FullNameOfAutor == FullNameEntry.Text))
                 {
                     await DisplayAlert("Помилка", "Книга з такою назвою вже існує", "OK");
                     return;
@@ -92,21 +95,28 @@ namespace CourseWork.Views
                 {
                     try
                     {
-                        var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
-                        dto.Books.RemoveAll(b => b.NameOfBook == selectedBook.NameOfBook && b.FullNameOfAutor == selectedBook.FullNameOfAutor);
+                        var library = Library.Instance;
+                        var bookToRemove = library.ToDTO().Books.FirstOrDefault(b =>
+                            b.NameOfBook == selectedBook.NameOfBook &&
+                            b.FullNameOfAutor == selectedBook.FullNameOfAutor);
 
-                        Serializer.SaveToXml(dto, libraryPath);
-                        LoadBooks();
-
-                        await DisplayAlert("Успіх", $"Книгу \"{selectedBook.NameOfBook}\" видалено", "OK");
+                        if (bookToRemove != null)
+                        {
+                            library.RemoveBook(new Book(bookToRemove));
+                            Serializer.SaveToXml(library.ToDTO(), libraryPath);
+                            LoadBooks();
+                            await DisplayAlert("Успіх", $"Книгу \"{selectedBook.NameOfBook}\" видалено", "OK");
+                        }
                     }
                     catch (Exception ex)
                     {
                         await DisplayAlert("Помилка", $"Не вдалося видалити: {ex.Message}", "OK");
                     }
                 }
+
                 ((ListView)sender).SelectedItem = null;
             }
         }
+
     }
 }

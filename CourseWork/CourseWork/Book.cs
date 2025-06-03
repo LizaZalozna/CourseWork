@@ -10,10 +10,16 @@ namespace CourseWork
         bool isReserved;
         string reservedByLogin;
 
+        public string fullNameOfAutor_
+        {
+            get { return fullNameOfAutor; }
+        }
+
         public string nameOfBook_
         {
             get { return nameOfBook; }
         }
+
         public bool isAvailable_
         {
             get { return isAvailable; }

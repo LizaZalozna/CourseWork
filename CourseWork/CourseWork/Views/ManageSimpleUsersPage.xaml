@@ -87,6 +87,7 @@
                         </Frame>
             </StackLayout>
         </ScrollView>
+        <StackLayout Grid.Row="1">
                 <Label Text="Список звичайних користувачів"
                        Style="{StaticResource HeaderLabelStyle}"
                        Margin="20,0,0,10"/>
@@ -113,6 +114,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage> 
