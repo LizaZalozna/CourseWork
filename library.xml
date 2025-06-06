@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LibraryDTO xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Books>
     <Book>
@@ -216,6 +216,12 @@
         <LendedBooks />
         <Lendings />
       </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Марина Миронова</FullName>
+      <Login>mar_myr</Login>
+      <Password>marmyr2025</Password>
+      <Role>Librarian</Role>
     </UserDTO>
   </Users>
   <Settings>

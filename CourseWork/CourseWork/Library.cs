@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace CourseWork
 {
@@ -10,6 +11,7 @@ namespace CourseWork
         List<Book> books;
         List<User> users;
         Settings settings;
+
         private Library()
         {
             books = new List<Book>();
@@ -123,6 +125,14 @@ namespace CourseWork
             }
         }
 
+        public void CanselReservetion(SimpleUser user, Book book)
+        {
+            user.reservations_.Remove(user.reservations_.FirstOrDefault(b =>
+                    b.book_ == book));
+            user.reservedBooks_.Remove(book);
+            book.CancelReservation();
+        }
+
         public bool LendBook(Book book, SimpleUser user, DateTime date)
         {
             if (user.reputation_ > 0 && book.Lend(user))
@@ -167,9 +177,7 @@ namespace CourseWork
                         if ((DateTime.Now - res.reservationDate_).TotalDays > settings.reservedTime_)
                         {
                             ((SimpleUser)user).ChangeReputation(-(settings.reservedReputation_));
-                            ((SimpleUser)user).reservations_.Remove(res);
-                            ((SimpleUser)user).reservedBooks_.Remove(res.book_);
-                            res.book_.CancelReservation();
+                            CanselReservetion(((SimpleUser)user), res.book_);
                         }
                     }
                 }

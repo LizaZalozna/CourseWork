@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -26,10 +27,14 @@ namespace CourseWork.Views
 
             try
             {
-                LibraryDTO library = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
-                var user = library.Users.FirstOrDefault(u =>
+                LibraryDTO dto = File.Exists(libraryPath)
+                ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
+                : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
+                Library library = Library.Initialize(dto);
+                library.CheckUnclaimedReservations();
+                Serializer.SaveToXml(library.ToDTO(), libraryPath);
+                var user = library.ToDTO().Users.FirstOrDefault(u =>
                     u.Login == LoginEntry.Text && u.Password == PasswordEntry.Text);
-
                 if (user != null)
                 {
                     string role = user.Role;
@@ -41,6 +46,10 @@ namespace CourseWork.Views
                     else if (role.ToLower() == "librarian")
                     {
                         Application.Current.MainPage = new NavigationPage(new LibrarianPage(new Librarian(user)));
+                    }
+                    else if (role.ToLower() == "simpleuser")
+                    {
+                        Application.Current.MainPage = new NavigationPage(new SimpleUserPage(new SimpleUser(user)));
                     }
                 }
                 else

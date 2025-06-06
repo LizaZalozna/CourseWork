@@ -8,7 +8,6 @@ namespace CourseWork.Views
 {
     public partial class AdminPage : ContentPage
     {
-        private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
         private readonly Admin admin;
 
         public AdminPage(Admin admin)

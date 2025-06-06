@@ -6,7 +6,6 @@ namespace CourseWork.Views
 {
     public partial class LibrarianPage : ContentPage
     {
-        private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
         private readonly Librarian librarian;
 
         public LibrarianPage(Librarian librarian)
