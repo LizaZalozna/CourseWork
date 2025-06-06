@@ -6,8 +6,8 @@ namespace CourseWork
 	[XmlType("Book")]
 	public class BookDTO
 	{
-		[XmlElement("FullNameOfAutor")]
-		public string FullNameOfAutor { get; set; }
+		[XmlElement("FullNameOfAuthor")]
+		public string FullNameOfAuthor { get; set; }
 
 		[XmlElement("NameOfBook")]
 		public string NameOfBook { get; set; }

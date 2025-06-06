@@ -107,7 +107,7 @@
                         <StackLayout Padding="10" Spacing="4">
                             <Label Text="{Binding NameOfBook}" 
                                    Style="{StaticResource ListItemNameStyle}" />
-                            <Label Text="{Binding FullNameOfAutor}" 
+                            <Label Text="{Binding FullNameOfAuthor}" 
                                    Style="{StaticResource ListItemNameOfBookStyle}" />
                             <Label Text="{Binding Genre}" 
                                    Style="{StaticResource ListItemNameOfBookStyle}" />

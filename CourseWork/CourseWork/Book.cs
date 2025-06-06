@@ -3,16 +3,16 @@ namespace CourseWork
 {
     public class Book
     {
-        string fullNameOfAutor;
+        string fullNameOfAuthor;
         string nameOfBook;
         BookGenre.LiteraryGenre genre;
         bool isAvailable;
         bool isReserved;
         string reservedByLogin;
 
-        public string fullNameOfAutor_
+        public string fullNameOfAuthor_
         {
-            get { return fullNameOfAutor; }
+            get { return fullNameOfAuthor; }
         }
 
         public string nameOfBook_
@@ -23,6 +23,11 @@ namespace CourseWork
         public bool isAvailable_
         {
             get { return isAvailable; }
+        }
+
+        public string genre_
+        {
+            get { return genre.ToString(); }
         }
 
         public bool isReserved_
@@ -37,7 +42,7 @@ namespace CourseWork
 
         public Book(string fullName, string nameOfBook, BookGenre.LiteraryGenre genre)
         {
-            this.fullNameOfAutor = fullName;
+            this.fullNameOfAuthor = fullName;
             this.nameOfBook = nameOfBook;
             this.genre = genre;
             this.isAvailable = true;
@@ -48,7 +53,7 @@ namespace CourseWork
         {
             return new BookDTO()
             {
-                FullNameOfAutor = fullNameOfAutor,
+                FullNameOfAuthor = fullNameOfAuthor,
                 NameOfBook = nameOfBook,
                 Genre = genre,
                 IsAvailable = isAvailable,
@@ -59,7 +64,7 @@ namespace CourseWork
 
         public Book(BookDTO dto)
         {
-            this.fullNameOfAutor = dto.FullNameOfAutor;
+            this.fullNameOfAuthor = dto.FullNameOfAuthor;
             this.nameOfBook = dto.NameOfBook;
             this.genre = dto.Genre;
             this.isAvailable = dto.IsAvailable;

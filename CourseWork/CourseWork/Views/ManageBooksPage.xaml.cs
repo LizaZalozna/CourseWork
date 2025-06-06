@@ -63,7 +63,7 @@ namespace CourseWork.Views
                 ? Serializer.LoadFromXml<LibraryDTO>(libraryPath)
                 : new LibraryDTO { Users = new List<UserDTO>(), Books = new List<BookDTO>(), Settings = new SettingsDTO() };
                 Library library = Library.Initialize(dto);
-                if (dto.Books.Any(b => b.NameOfBook == NameOfBookEntry.Text && b.FullNameOfAutor == FullNameEntry.Text))
+                if (dto.Books.Any(b => b.NameOfBook == NameOfBookEntry.Text && b.FullNameOfAuthor == FullNameEntry.Text))
                 {
                     await DisplayAlert("Помилка", "Книга з такою назвою вже існує", "OK");
                     return;
@@ -98,7 +98,7 @@ namespace CourseWork.Views
                         var library = Library.Instance;
                         var bookToRemove = library.ToDTO().Books.FirstOrDefault(b =>
                             b.NameOfBook == selectedBook.NameOfBook &&
-                            b.FullNameOfAutor == selectedBook.FullNameOfAutor);
+                            b.FullNameOfAuthor == selectedBook.FullNameOfAuthor);
 
                         if (bookToRemove != null)
                         {

@@ -61,7 +61,7 @@ namespace CourseWork
 
         public void RemoveBook(Book book)
         {
-            books.RemoveAll(b => b.nameOfBook_ == book.nameOfBook_ && b.fullNameOfAutor_ == book.fullNameOfAutor_);
+            books.RemoveAll(b => b.nameOfBook_ == book.nameOfBook_ && b.fullNameOfAuthor_ == book.fullNameOfAuthor_);
         }
 
         public bool AddSimpleUser(string fullName, string login, string password, Librarian librarian)

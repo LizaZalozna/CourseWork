@@ -1,190 +1,190 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LibraryDTO xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Books>
     <Book>
-      <FullNameOfAutor>Аннетт Марі</FullNameOfAutor>
+      <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
       <NameOfBook>Червона зима</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Аннетт Марі</FullNameOfAutor>
+      <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
       <NameOfBook>Темна буря</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Аннетт Марі</FullNameOfAutor>
+      <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
       <NameOfBook>Безсмертний вогонь</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
       <NameOfBook>Та дівчина</NameOfBook>
       <Genre>Детектив</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
       <NameOfBook>Нуль днів</NameOfBook>
       <Genre>Детектив</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Рут Веа</FullNameOfAutor>
+      <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
       <NameOfBook>Одне за одним</NameOfBook>
       <Genre>Детектив</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Метью Блейк</FullNameOfAutor>
+      <FullNameOfAuthor>Метью Блейк</FullNameOfAuthor>
       <NameOfBook>Анна О</NameOfBook>
       <Genre>Детектив</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Тесс Ґеррітсен</FullNameOfAutor>
+      <FullNameOfAuthor>Тесс Ґеррітсен</FullNameOfAuthor>
       <NameOfBook>Сад кісток</NameOfBook>
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Керолайн Кепнес</FullNameOfAutor>
+      <FullNameOfAuthor>Керолайн Кепнес</FullNameOfAuthor>
       <NameOfBook>Ти</NameOfBook>
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Анастасія Нікуліна</FullNameOfAutor>
+      <FullNameOfAuthor>Анастасія Нікуліна</FullNameOfAuthor>
       <NameOfBook>Завірюха</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Елізабет Лім</FullNameOfAutor>
+      <FullNameOfAuthor>Елізабет Лім</FullNameOfAuthor>
       <NameOfBook>Шість багряних журавлів</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Елізабет Лім</FullNameOfAutor>
+      <FullNameOfAuthor>Елізабет Лім</FullNameOfAuthor>
       <NameOfBook>Обіцянка дракона</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Стівен Кінг</FullNameOfAutor>
+      <FullNameOfAuthor>Стівен Кінг</FullNameOfAuthor>
       <NameOfBook>Воно</NameOfBook>
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Стівен Кінг</FullNameOfAutor>
+      <FullNameOfAuthor>Стівен Кінг</FullNameOfAuthor>
       <NameOfBook>Мертва зона</NameOfBook>
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Джейсон Рекулак</FullNameOfAutor>
+      <FullNameOfAuthor>Джейсон Рекулак</FullNameOfAuthor>
       <NameOfBook>Приховані малюнки</NameOfBook>
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Алі Гейзелвуд</FullNameOfAutor>
+      <FullNameOfAuthor>Алі Гейзелвуд</FullNameOfAuthor>
       <NameOfBook>Шах і мат</NameOfBook>
       <Genre>Романтика</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Крістіна Лорен</FullNameOfAutor>
+      <FullNameOfAuthor>Крістіна Лорен</FullNameOfAuthor>
       <NameOfBook>Формула спорідненої душі</NameOfBook>
       <Genre>Романтика</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Медді Довсон</FullNameOfAutor>
+      <FullNameOfAuthor>Медді Довсон</FullNameOfAuthor>
       <NameOfBook>Сватання для початківців</NameOfBook>
       <Genre>Романтика</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Медді Довсон</FullNameOfAutor>
+      <FullNameOfAuthor>Медді Довсон</FullNameOfAuthor>
       <NameOfBook>Щаслива катастрофа</NameOfBook>
       <Genre>Романтика</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Мін Джін Лі</FullNameOfAutor>
+      <FullNameOfAuthor>Мін Джін Лі</FullNameOfAuthor>
       <NameOfBook>Пачінко</NameOfBook>
       <Genre>Історичний</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Емі Гармон</FullNameOfAutor>
+      <FullNameOfAuthor>Емі Гармон</FullNameOfAuthor>
       <NameOfBook>Що знає вітер</NameOfBook>
       <Genre>Історичний</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Енн Петчетт</FullNameOfAutor>
+      <FullNameOfAuthor>Енн Петчетт</FullNameOfAuthor>
       <NameOfBook>Голландський дім</NameOfBook>
       <Genre>Історичний</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Едвард Резерфорд</FullNameOfAutor>
+      <FullNameOfAuthor>Едвард Резерфорд</FullNameOfAuthor>
       <NameOfBook>Лондон</NameOfBook>
       <Genre>Історичний</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Кейвін Льюїс</FullNameOfAutor>
+      <FullNameOfAuthor>Кейвін Льюїс</FullNameOfAuthor>
       <NameOfBook>Гамбіт крадіїв</NameOfBook>
       <Genre>Пригоди</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Стівен Кінг</FullNameOfAutor>
+      <FullNameOfAuthor>Стівен Кінг</FullNameOfAuthor>
       <NameOfBook>Казка</NameOfBook>
       <Genre>Пригоди</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Дженніфер Лінн Барнс</FullNameOfAutor>
+      <FullNameOfAuthor>Дженніфер Лінн Барнс</FullNameOfAuthor>
       <NameOfBook>Ігри спадкоємців</NameOfBook>
       <Genre>Пригоди</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
     <Book>
-      <FullNameOfAutor>Іван Франко</FullNameOfAutor>
+      <FullNameOfAuthor>Іван Франко</FullNameOfAuthor>
       <NameOfBook>Захар Беркут</NameOfBook>
       <Genre>Пригоди</Genre>
       <IsAvailable>true</IsAvailable>
