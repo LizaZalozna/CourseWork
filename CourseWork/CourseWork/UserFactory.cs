@@ -30,8 +30,7 @@ namespace CourseWork
             {
                 "Admin" => new Admin(dto),
                 "Librarian" => new Librarian(dto),
-                "SimpleUser" => new SimpleUser(dto),
-                _ => new User(dto)
+                "SimpleUser" => new SimpleUser(dto)
             };
         }
     }

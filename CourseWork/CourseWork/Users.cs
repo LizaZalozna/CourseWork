@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CourseWork
 {
-    public class User
+    public abstract class User
     {
         protected string fullName;
         protected string login;
@@ -20,25 +20,16 @@ namespace CourseWork
             get { return fullName; }
         }
 
-        public User(UserDTO dto)
+        protected User(UserDTO dto)
         {
             fullName = dto.FullName;
             login = dto.Login;
             password = dto.Password;
         }
 
-        public virtual UserDTO ToDTO()
-        {
-            return new UserDTO
-            {
-                FullName = fullName,
-                Login = login,
-                Password = password,
-                Role = "User"
-            };
-        }
+        public abstract UserDTO ToDTO();
 
-        public User(string fullName, string login, string password)
+        protected User(string fullName, string login, string password)
         {
             this.fullName = fullName;
             this.login = login;
@@ -52,9 +43,13 @@ namespace CourseWork
 
         public override UserDTO ToDTO()
         {
-            var dto = base.ToDTO();
-            dto.Role = "Admin";
-            return dto;
+            return new UserDTO
+            {
+                FullName = fullName,
+                Login = login,
+                Password = password,
+                Role = "Admin"
+            };
         }
 
         public Admin(UserDTO dto) : base(dto) { }
@@ -145,9 +140,13 @@ namespace CourseWork
 
         public override UserDTO ToDTO()
         {
-            var dto = base.ToDTO();
-            dto.Role = "Librarian";
-            return dto;
+            return new UserDTO
+            {
+                FullName = fullName,
+                Login = login,
+                Password = password,
+                Role = "Librarian"
+            };
         }
 
         public Librarian(UserDTO dto) : base(dto) { }
