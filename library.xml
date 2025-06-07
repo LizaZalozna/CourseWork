@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LibraryDTO xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Books>
     <Book>
       <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
       <NameOfBook>Червона зима</NameOfBook>
       <Genre>Фентезі</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
       <ReservedByLogin />
     </Book>
@@ -13,7 +13,7 @@
       <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
       <NameOfBook>Темна буря</NameOfBook>
       <Genre>Фентезі</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
       <ReservedByLogin />
     </Book>
@@ -23,6 +23,7 @@
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
@@ -43,8 +44,9 @@
       <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
       <NameOfBook>Одне за одним</NameOfBook>
       <Genre>Детектив</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Метью Блейк</FullNameOfAuthor>
@@ -52,6 +54,7 @@
       <Genre>Детектив</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Тесс Ґеррітсен</FullNameOfAuthor>
@@ -59,6 +62,7 @@
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Керолайн Кепнес</FullNameOfAuthor>
@@ -143,6 +147,7 @@
       <Genre>Історичний</Genre>
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Емі Гармон</FullNameOfAuthor>
@@ -176,8 +181,9 @@
       <FullNameOfAuthor>Стівен Кінг</FullNameOfAuthor>
       <NameOfBook>Казка</NameOfBook>
       <Genre>Пригоди</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Дженніфер Лінн Барнс</FullNameOfAuthor>
@@ -213,11 +219,82 @@
       <Password>amor2091</Password>
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
-        <Reputation>100</Reputation>
+        <Reputation>105</Reputation>
         <ReservedBooks />
         <Reservations />
-        <LendedBooks />
-        <Lendings />
+        <LendedBooks>
+          <Book>
+            <FullNameOfAuthor>Стівен Кінг</FullNameOfAuthor>
+            <NameOfBook>Казка</NameOfBook>
+            <Genre>Пригоди</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+          <Book>
+            <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
+            <NameOfBook>Одне за одним</NameOfBook>
+            <Genre>Детектив</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+          <Book>
+            <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
+            <NameOfBook>Червона зима</NameOfBook>
+            <Genre>Фентезі</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+        </LendedBooks>
+        <Lendings>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Стівен Кінг</FullNameOfAuthor>
+              <NameOfBook>Казка</NameOfBook>
+              <Genre>Пригоди</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-07T20:55:48.387584+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
+              <NameOfBook>Одне за одним</NameOfBook>
+              <Genre>Детектив</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-07T21:52:09.202367+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
+              <NameOfBook>Червона зима</NameOfBook>
+              <Genre>Фентезі</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-07T21:54:50.368093+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
+        </Lendings>
       </SimpleUserDetails>
     </UserDTO>
     <UserDTO>

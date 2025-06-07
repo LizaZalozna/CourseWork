@@ -22,7 +22,7 @@ namespace CourseWork.Views
 
         private async void OnLendBookClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Неможливо", "Функція на етапі розробки", "OK");
+            await Navigation.PushAsync(new LendBookPage());
         }
 
         private async void OnReturnBookClicked(object sender, EventArgs e)

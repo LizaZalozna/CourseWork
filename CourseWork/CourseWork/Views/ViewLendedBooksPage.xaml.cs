@@ -11,17 +11,14 @@ namespace CourseWork.Views
         private readonly SimpleUser simpleUser;
         private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
         private ObservableCollection<BookDTO> books;
-        private ObservableCollection<RecordDTO> lendings;
 
         public ViewLendedBooksPage(SimpleUser simpleUser)
 		{
-			InitializeComponent();
-            books = new ObservableCollection<BookDTO>();
-            lendings = new ObservableCollection<RecordDTO>();
+            InitializeComponent();
             this.simpleUser = simpleUser;
+            books = new ObservableCollection<BookDTO>();
+            BooksListView.ItemsSource = books;
             LoadBooks();
-            BooksListView.ItemsSource = simpleUser.lendedBooks_;
-            LendingListView.ItemsSource = simpleUser.lendings_;
         }
 
         private void LoadBooks()
@@ -34,16 +31,11 @@ namespace CourseWork.Views
                     Library.Initialize(dto);
                 }
                 books.Clear();
-                lendings.Clear();
                 var user = Library.Instance.GetSimpleUserByLogin(simpleUser.login_);
 
                 foreach (var lendedBook in user.lendedBooks_)
                 {
                     books.Add(lendedBook.ToDTO());
-                }
-                foreach (var lending in user.lendings_)
-                {
-                    lendings.Add(lending.ToDTO());
                 }
             }
             catch (Exception ex)

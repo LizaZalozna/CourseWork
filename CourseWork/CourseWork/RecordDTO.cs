@@ -17,6 +17,25 @@ namespace CourseWork
 
         [XmlElement("ReservationRecordData")]
         public ReservationRecordData? ReservationRecordData { get; set; }
+
+        public string RecordDateString
+        {
+            get
+            {
+                if (RecordType == "Lending" && LendingRecordData != null)
+                {
+                    return $"Видано: {LendingRecordData.LendDate:dd.MM.yyyy} - Повернути: {LendingRecordData.ReturnDate:dd.MM.yyyy}";
+                }
+                else if (RecordType == "Reservation" && ReservationRecordData != null)
+                {
+                    return $"Зарезервовано: {ReservationRecordData.ReservationDate:dd.MM.yyyy}";
+                }
+                else
+                {
+                    return string.Empty;
+                }
+            }
+        }
     }
 
     [XmlType("LendingRecordData")]

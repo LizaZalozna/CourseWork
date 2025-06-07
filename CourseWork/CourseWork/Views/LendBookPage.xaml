@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="CourseWork.Views.LendBookPage"
+    Title="Видача книг"
+    BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FormLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+
+            <Style x:Key="ListItemNameStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+
+            <Style x:Key="ListItemNameOfBookStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#13A3AD"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="LineBreakMode" Value="NoWrap"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="10">
+
+            <Label Text="Тип пошуку"
+                   Style="{StaticResource FormLabelStyle}"/>
+            <Picker x:Name="SearchTypePicker"
+                    Title="Оберіть тип пошуку"
+                    TextColor="#13A3AD">
+                <Picker.Items>
+                    <x:String>Назва</x:String>
+                    <x:String>Автор</x:String>
+                    <x:String>Жанр</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Пошуковий запит"
+                   Style="{StaticResource FormLabelStyle}"/>
+            <Entry x:Name="SearchEntry"
+                   Placeholder="Введіть запит..."
+                   TextColor="#13A3AD"/>
+
+            <Button Text="Пошук"
+                    BackgroundColor="#13A3AD"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="OnSearchClicked"/>
+
+            <ListView x:Name="BooksListView"
+                      HasUnevenRows="True"
+                      BackgroundColor="AliceBlue"
+                      SeparatorColor="White"
+                      Margin="0,10,0,0"
+                      ItemTapped="OnBookTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" BackgroundColor="#F0F8F8">
+                                <Label Text="{Binding NameOfBook}" Style="{StaticResource ListItemNameStyle}" />
+                                <Label Text="{Binding FullNameOfAuthor}" Style="{StaticResource ListItemNameOfBookStyle}" />
+                                <Label Text="{Binding Genre}" Style="{StaticResource ListItemNameOfBookStyle}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label Text="Оберіть користувача"
+                   Style="{StaticResource FormLabelStyle}"
+                   Margin="0,20,0,5" />
+            <Picker x:Name="UserPicker"
+                    Title="Оберіть користувача"
+                    IsEnabled="True"
+                    TextColor="#13A3AD" />
+
+            <Button Text="Видати книгу"
+                    Clicked="OnLendBookClicked"
+                    BackgroundColor="#13A3AD"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Margin="0,10,0,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

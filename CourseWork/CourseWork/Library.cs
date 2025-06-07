@@ -131,22 +131,23 @@ namespace CourseWork
         public void CancelReservation(SimpleUser user, Book book)
         {
             user.RemoveReservation(user.reservations_.FirstOrDefault(b =>
-                    b.book_ == book));
+                   b.book_ == book));
             user.RemoveReservedBook(book);
             book.CancelReservation();
         }
 
         public bool LendBook(Book book, SimpleUser user, DateTime date)
         {
-            if (user.reputation_ > 0 && book.Lend(user) && user.lendedBooks_.Count < settings.maxLended_) 
+            bool isReserved = book.isReserved_;
+            Book book1 = book;
+            if (user.reputation_ > 0 && book.Lend(user) && user.lendedBooks_.Count < settings.maxLended_)
             {
                 user.AddLendedBook(book);
                 user.AddLending(new LendingRecord(book, date));
-                if (book.isReserved_)
+                if (isReserved)
                 {
                     user.ChangeReputation(settings.reservedReputation_);
-                    user.RemoveReservedBook(book);
-                    user.RemoveReservation(user.reservations_.Find(r => r.book_ == book));
+                    CancelReservation(user, book1);
                 }
                 return true;
             }
@@ -179,8 +180,11 @@ namespace CourseWork
                     {
                         if ((DateTime.Now - res.reservationDate_).TotalDays > settings.reservedTime_)
                         {
-                            ((SimpleUser)user).ChangeReputation(-(settings.reservedReputation_));
-                            CancelReservation(((SimpleUser)user), res.book_);
+                            var simpleUser = (SimpleUser)user;
+                            simpleUser.ChangeReputation(-(settings.reservedReputation_));
+                            simpleUser.RemoveReservedBook(res.book_);
+                            simpleUser.RemoveReservation(simpleUser.reservations_.Find(r => r.book_ == res.book_));
+                            res.book_.CancelReservation();
                         }
                     }
                 }
