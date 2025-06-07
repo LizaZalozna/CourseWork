@@ -16,7 +16,7 @@ namespace CourseWork
         {
             books = new List<Book>();
             users = new List<User>();
-            settings = new Settings(0,0,0,0);
+            settings = new Settings(0,0,0,0,0,0);
         }
 
         private Library(LibraryDTO dto)
@@ -104,19 +104,22 @@ namespace CourseWork
             users.RemoveAll(u => u.login_ == librarian.login_);
         }
 
-        public void ChangeSettings(int rR, int rT, int retR, int retT)
+        public void ChangeSettings(int rR, int rT, int mR, int retR, int retT, int mL)
         {
-            settings = new Settings(rR, rT, retR, retT);
+            settings = new Settings(rR, rT, mR, retR, retT, mL);
         }
 
         public void ReserveBook(SimpleUser user, Book book, DateTime date)
         {
             if (user.reputation_ > 50)
             {
-                if (book.Reserve(user))
+                if (user.reservedBooks_.Count < settings.maxReserved_)
                 {
-                    user.reservedBooks_.Add(book);
-                    user.reservations_.Add(new ReservationRecord(book, date));
+                    if (book.Reserve(user))
+                    {
+                        user.reservedBooks_.Add(book);
+                        user.reservations_.Add(new ReservationRecord(book, date));
+                    }
                 }
             }
             else
@@ -135,7 +138,7 @@ namespace CourseWork
 
         public bool LendBook(Book book, SimpleUser user, DateTime date)
         {
-            if (user.reputation_ > 0 && book.Lend(user))
+            if (user.reputation_ > 0 && book.Lend(user) && user.lendedBooks_.Count < settings.maxLended_) 
             {
                 user.lendedBooks_.Add(book);
                 user.lendings_.Add(new LendingRecord(book, date));

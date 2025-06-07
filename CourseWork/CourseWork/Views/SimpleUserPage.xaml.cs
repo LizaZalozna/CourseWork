@@ -23,12 +23,12 @@ namespace CourseWork.Views
 
         private async void OnViewReservedBooksClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Неможливо", "Функція на етапі розробки", "OK");
+            await Navigation.PushAsync(new ViewReservedBooksPage(simpleUser));
         }
 
         private async void OnViewLendedBooksClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new OnViewLendedBooksPage(simpleUser));
+            await Navigation.PushAsync(new ViewLendedBooksPage(simpleUser));
         }
 
         private async void OnLogoutClicked(object sender, EventArgs e)

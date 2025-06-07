@@ -29,8 +29,10 @@ namespace CourseWork.Views
                 var library = Library.Instance;
                 ReservedTimeEntry.Text = library.ToDTO().Settings.ReservedTime.ToString();
                 ReservedReputationEntry.Text = library.ToDTO().Settings.ReservedReputation.ToString();
+                MaxReservedEntry.Text = library.ToDTO().Settings.MaxReserved.ToString();
                 ReturnTimeEntry.Text = library.ToDTO().Settings.ReturnTime.ToString();
                 ReturnReputationEntry.Text = library.ToDTO().Settings.ReturnReputation.ToString();
+                MaxLendedEntry.Text = library.ToDTO().Settings.MaxLended.ToString();
             }
             catch (Exception ex)
             {
@@ -42,8 +44,10 @@ namespace CourseWork.Views
         {
             if (string.IsNullOrWhiteSpace(ReservedReputationEntry.Text) ||
                 string.IsNullOrWhiteSpace(ReservedTimeEntry.Text) ||
+                string.IsNullOrWhiteSpace(MaxReservedEntry.Text) ||
                 string.IsNullOrWhiteSpace(ReturnReputationEntry.Text) ||
-                string.IsNullOrWhiteSpace(ReturnTimeEntry.Text))
+                string.IsNullOrWhiteSpace(ReturnTimeEntry.Text) ||
+                string.IsNullOrWhiteSpace(MaxLendedEntry.Text))
             {
                 await DisplayAlert("Помилка", "Будь ласка, заповніть всі поля", "OK");
                 return;
@@ -59,11 +63,13 @@ namespace CourseWork.Views
 
                 if (!(dto.Settings.ReservedReputation == int.Parse(ReservedReputationEntry.Text) &&
                     dto.Settings.ReservedTime == int.Parse(ReservedTimeEntry.Text) &&
+                    dto.Settings.MaxReserved==int.Parse(MaxReservedEntry.Text)&&
                     dto.Settings.ReturnReputation == int.Parse(ReturnReputationEntry.Text) &&
-                    dto.Settings.ReturnTime == int.Parse(ReturnTimeEntry.Text))) 
+                    dto.Settings.ReturnTime == int.Parse(ReturnTimeEntry.Text) &&
+                    dto.Settings.MaxLended==int.Parse(MaxLendedEntry.Text))) 
                 {
-                    library.ChangeSettings(int.Parse(ReservedReputationEntry.Text), int.Parse(ReservedTimeEntry.Text),
-                    int.Parse(ReturnReputationEntry.Text), int.Parse(ReturnTimeEntry.Text));
+                    library.ChangeSettings(int.Parse(ReservedReputationEntry.Text), int.Parse(ReservedTimeEntry.Text), int.Parse(MaxReservedEntry.Text),
+                    int.Parse(ReturnReputationEntry.Text), int.Parse(ReturnTimeEntry.Text), int.Parse(MaxLendedEntry.Text));
                     Serializer.SaveToXml(library.ToDTO(), libraryPath);
                     await DisplayAlert("Успіх", "Налаштування змінено", "OK");
                 }

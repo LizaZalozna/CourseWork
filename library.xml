@@ -227,7 +227,9 @@
   <Settings>
     <ReservedReputation>5</ReservedReputation>
     <ReservedTime>3</ReservedTime>
+    <MaxReserved>4</MaxReserved>
     <ReturnReputation>10</ReturnReputation>
     <ReturnTime>10</ReturnTime>
+    <MaxLended>5</MaxLended>
   </Settings>
 </LibraryDTO>

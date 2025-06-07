@@ -18,11 +18,17 @@
                 <Label Text="Час бронювання (днів)" TextColor="#13A3AD"/>
                 <Entry x:Name="ReservedTimeEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
 
+                <Label Text="Максимальна кількість заброньованих книг" TextColor="#13A3AD"/>
+                <Entry x:Name="MaxReservedEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
+
                 <Label Text="Репутація за повернення" TextColor="#13A3AD"/>
                 <Entry x:Name="ReturnReputationEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
 
                 <Label Text="Час повернення (днів)" TextColor="#13A3AD"/>
                 <Entry x:Name="ReturnTimeEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
+
+                <Label Text="Максимальна кількість взятих книг" TextColor="#13A3AD"/>
+                <Entry x:Name="MaxLendedEntry" Keyboard="Numeric" Placeholder="Введіть значення" TextColor="#13A3AD"/>
 
                 <Button Text="Зберегти" BackgroundColor="#13A3AD" TextColor="White" Clicked="OnSaveClicked" HeightRequest="50" />
 

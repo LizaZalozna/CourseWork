@@ -7,9 +7,11 @@ namespace CourseWork
 	{
 		int reservedReputation;
 		int reservedTime;
+        int maxReserved;
 		int returnReputation;
 		int returnTime;
-
+        int maxLended;
+        
         public int reservedReputation_
 		{ 
             get { return reservedReputation; }
@@ -19,6 +21,11 @@ namespace CourseWork
         {
             get { return reservedTime; }
 
+        }
+
+        public int maxReserved_
+        {
+            get { return maxReserved; }
         }
 
         public int returnReputation_
@@ -33,12 +40,19 @@ namespace CourseWork
 
         }
 
-        public Settings(int reservedReputation, int reservedTime, int returnReputation, int returnTime)
+        public int maxLended_
+        {
+            get { return maxLended; }
+        }
+
+        public Settings(int reservedReputation, int reservedTime, int maxReserved, int returnReputation, int returnTime, int maxLended)
         {
             this.reservedReputation = reservedReputation;
             this.reservedTime = reservedTime;
+            this.maxReserved = maxReserved;
             this.returnReputation = returnReputation;
             this.returnTime = returnTime;
+            this.maxLended = maxLended;
         }
 
         public SettingsDTO ToDTO()
@@ -47,8 +61,10 @@ namespace CourseWork
             {
                 ReservedReputation = reservedReputation,
                 ReservedTime = reservedTime,
+                MaxReserved = maxReserved,
                 ReturnReputation = returnReputation,
-                ReturnTime = returnTime
+                ReturnTime = returnTime,
+                MaxLended = maxLended
             };
         }
 
@@ -56,8 +72,10 @@ namespace CourseWork
         {
             this.reservedReputation = dto.ReservedReputation;
             this.reservedTime = dto.ReservedTime;
+            this.maxReserved = dto.MaxReserved;
             this.returnReputation = dto.ReturnReputation;
             this.returnTime = dto.ReturnTime;
+            this.maxLended = dto.MaxLended;
         }
     }
 }
