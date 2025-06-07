@@ -18,7 +18,7 @@ namespace CourseWork.Views
 
         private async void OnReserveBookClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Неможливо", "Функція на етапі розробки", "OK");
+            await Navigation.PushAsync(new ReserveBookPage(simpleUser));
         }
 
         private async void OnViewReservedBooksClicked(object sender, EventArgs e)

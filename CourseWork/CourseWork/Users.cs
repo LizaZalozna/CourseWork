@@ -80,20 +80,36 @@ namespace CourseWork
             get { return reservedBooks; }
         }
 
+        public void AddReservedBook(Book book) => reservedBooks.Add(book);
+
+        public void RemoveReservedBook(Book book) => reservedBooks.Remove(book);
+
         public List<ReservationRecord> reservations_
         {
             get { return reservations; }
         }
+
+        public void AddReservation(ReservationRecord res) => reservations.Add(res);
+
+        public void RemoveReservation(ReservationRecord res) => reservations.Remove(res);
 
         public List<Book> lendedBooks_
         {
             get { return lendedBooks; }
         }
 
+        public void AddLendedBook(Book book) => lendedBooks.Add(book);
+
+        public void RemoveLendedBook(Book book) => lendedBooks.Remove(book);
+
         public List<LendingRecord> lendings_
         {
             get { return lendings; }
         }
+
+        public void AddLending(LendingRecord res) => lendings.Add(res);
+
+        public void RemoveLending(LendingRecord res) => lendings.Remove(res);
 
         public SimpleUser(string fullName, string login, string password) : base(fullName, login, password)
         {

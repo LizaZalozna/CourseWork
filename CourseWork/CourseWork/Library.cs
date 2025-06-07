@@ -117,8 +117,8 @@ namespace CourseWork
                 {
                     if (book.Reserve(user))
                     {
-                        user.reservedBooks_.Add(book);
-                        user.reservations_.Add(new ReservationRecord(book, date));
+                        user.AddReservedBook(book);
+                        user.AddReservation(new ReservationRecord(book, date));
                     }
                 }
             }
@@ -128,11 +128,11 @@ namespace CourseWork
             }
         }
 
-        public void CanselReservetion(SimpleUser user, Book book)
+        public void CancelReservation(SimpleUser user, Book book)
         {
-            user.reservations_.Remove(user.reservations_.FirstOrDefault(b =>
+            user.RemoveReservation(user.reservations_.FirstOrDefault(b =>
                     b.book_ == book));
-            user.reservedBooks_.Remove(book);
+            user.RemoveReservedBook(book);
             book.CancelReservation();
         }
 
@@ -140,13 +140,13 @@ namespace CourseWork
         {
             if (user.reputation_ > 0 && book.Lend(user) && user.lendedBooks_.Count < settings.maxLended_) 
             {
-                user.lendedBooks_.Add(book);
-                user.lendings_.Add(new LendingRecord(book, date));
+                user.AddLendedBook(book);
+                user.AddLending(new LendingRecord(book, date));
                 if (book.isReserved_)
                 {
                     user.ChangeReputation(settings.reservedReputation_);
-                    user.reservedBooks_.Remove(book);
-                    user.reservations_.RemoveAll(r => r.book_ == book);
+                    user.RemoveReservedBook(book);
+                    user.RemoveReservation(user.reservations_.Find(r => r.book_ == book));
                 }
                 return true;
             }
@@ -165,7 +165,7 @@ namespace CourseWork
                     user.ChangeReputation(-(settings.returnReputation_));
                 }
                 else user.ChangeReputation(settings.returnReputation_);
-                user.lendedBooks_.Remove(record.book_);
+                user.RemoveLendedBook(record.book_);
             }
         }
 
@@ -180,11 +180,21 @@ namespace CourseWork
                         if ((DateTime.Now - res.reservationDate_).TotalDays > settings.reservedTime_)
                         {
                             ((SimpleUser)user).ChangeReputation(-(settings.reservedReputation_));
-                            CanselReservetion(((SimpleUser)user), res.book_);
+                            CancelReservation(((SimpleUser)user), res.book_);
                         }
                     }
                 }
             }
+        }
+
+        public Book GetBookByTitleAndAuthor(string title, string author)
+        {
+            return books.FirstOrDefault(b => b.nameOfBook_ == title && b.fullNameOfAuthor_ == author);
+        }
+
+        public SimpleUser GetSimpleUserByLogin(string login)
+        {
+            return users.OfType<SimpleUser>().FirstOrDefault(u => u.login_ == login);
         }
     }
 }
