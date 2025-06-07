@@ -156,17 +156,25 @@ namespace CourseWork
 
         public void ReturnBook(Book book, SimpleUser user, DateTime date)
         {
-            book.Return();
-            LendingRecord record = user.lendings_.Find(r => r.book_ == book);
-            if (record != null)
+            LendingRecord record = user.lendings_.FirstOrDefault(r =>
+            r.book_.nameOfBook_ == book.nameOfBook_ &&
+            r.book_.fullNameOfAuthor_ == book.fullNameOfAuthor_);
+            var bookToRemove = user.lendedBooks_.FirstOrDefault(b =>
+            b.nameOfBook_ == book.nameOfBook_ && b.fullNameOfAuthor_ == book.fullNameOfAuthor_);
+            if (record == null)
             {
-                record.returnDate_ = date;
-                if ((record.returnDate_ - record.lendDate_).TotalDays > settings.returnTime_)
-                {
-                    user.ChangeReputation(-(settings.returnReputation_));
-                }
-                else user.ChangeReputation(settings.returnReputation_);
-                user.RemoveLendedBook(record.book_);
+                throw new InvalidOperationException("Ця книга не була видана цьому користувачу.");
+            }
+            user.RemoveLendedBook(bookToRemove);
+            user.RemoveLending(record);
+            book.Return();
+            if ((date - record.lendDate_).TotalDays > settings.returnTime_)
+            {
+                user.ChangeReputation(-(settings.returnReputation_));
+            }
+            else
+            {
+                user.ChangeReputation(settings.returnReputation_);
             }
         }
 
@@ -182,9 +190,7 @@ namespace CourseWork
                         {
                             var simpleUser = (SimpleUser)user;
                             simpleUser.ChangeReputation(-(settings.reservedReputation_));
-                            simpleUser.RemoveReservedBook(res.book_);
-                            simpleUser.RemoveReservation(simpleUser.reservations_.Find(r => r.book_ == res.book_));
-                            res.book_.CancelReservation();
+                            CancelReservation(simpleUser, res.book_);
                         }
                     }
                 }

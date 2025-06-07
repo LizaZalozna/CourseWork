@@ -27,7 +27,7 @@ namespace CourseWork.Views
 
         private async void OnReturnBookClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Неможливо", "Функція на етапі розробки", "OK");
+            await Navigation.PushAsync(new ReturnBookPage());
         }
 
         private async void OnLogoutClicked(object sender, EventArgs e)

@@ -2,8 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="CourseWork.Views.LendBookPage"
-    Title="Видача книг"
+    x:Class="CourseWork.Views.ReturnBookPage"
+    Title="Повернення книг"
     BackgroundColor="White">
 
     <ContentPage.Resources>
@@ -84,8 +84,8 @@
                     IsEnabled="True"
                     TextColor="#13A3AD" />
 
-            <Button Text="Видати книгу"
-                    Clicked="OnLendBookClicked"
+            <Button Text="Повернути книгу"
+                    Clicked="OnReturnBookClicked"
                     BackgroundColor="#13A3AD"
                     TextColor="White"
                     CornerRadius="0"

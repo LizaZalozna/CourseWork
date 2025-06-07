@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace CourseWork.Views
 {	
-	public partial class LendBookPage : ContentPage
+	public partial class ReturnBookPage : ContentPage
 	{
         private readonly string libraryPath = "/Users/lizazalozna/Projects/CourseWork/library.xml";
         private ObservableCollection<BookDTO> books;
@@ -16,9 +16,9 @@ namespace CourseWork.Views
         private Book selectedBook;
         private UserDTO selectedUser;
 
-        public LendBookPage()
-		{
-			InitializeComponent();
+        public ReturnBookPage()
+        {
+            InitializeComponent();
             books = new ObservableCollection<BookDTO>();
             simpleUsers = new ObservableCollection<UserDTO>();
             searcher = new BookSearcher();
@@ -49,40 +49,36 @@ namespace CourseWork.Views
                 var dto = Serializer.LoadFromXml<LibraryDTO>(libraryPath);
                 Library.Initialize(dto);
 
-                books.Clear();
-                foreach (BookDTO b in Library.Instance.ToDTO().Books)
-                {
-                    if (b.IsAvailable)
-                    {
-                        if (!b.IsReserved)
-                        {
-                            books.Add(b);
-                        }
-                        else if (selectedUser != null)
-                        {
-                            if (string.Equals(b.ReservedByLogin?.Trim(), selectedUser.Login.Trim(), StringComparison.OrdinalIgnoreCase))
-                            {
-                                books.Add(b);
-                            }
-                        }
-                    }
-                }
-                BooksListView.ItemsSource = books;
-
                 var simpleUsersUsers = dto.Users
-                    .Where(u => u.Role?.ToLower() == "simpleuser");
+                    .Where(u => u.Role?.ToLower() == "simpleuser")
+                    .ToList();
 
                 simpleUsers.Clear();
                 foreach (var simpleUser in simpleUsersUsers)
                 {
                     simpleUsers.Add(simpleUser);
                 }
+
                 var currentItems = UserPicker.ItemsSource as List<string>;
                 var newItems = simpleUsers.Select(u => u.Login).ToList();
-
                 if (!Enumerable.SequenceEqual(currentItems ?? new List<string>(), newItems))
                 {
                     UserPicker.ItemsSource = newItems;
+                }
+
+                books.Clear();
+                BooksListView.ItemsSource = null;
+
+                if (selectedUser != null)
+                {
+                    var user = Library.Instance.GetSimpleUserByLogin(selectedUser.Login);
+
+                    foreach (var lendedBook in user.lendedBooks_)
+                    {
+                        books.Add(lendedBook.ToDTO());
+                    }
+
+                    BooksListView.ItemsSource = books;
                 }
             }
             catch (Exception ex)
@@ -130,11 +126,11 @@ namespace CourseWork.Views
             ((ListView)sender).SelectedItem = null;
         }
 
-        private void OnLendBookClicked(object sender, EventArgs e)
+        private void OnReturnBookClicked(object sender, EventArgs e)
         {
             if (selectedBook == null)
             {
-                DisplayAlert("Увага", "Оберіть книгу для видачі", "OK");
+                DisplayAlert("Увага", "Оберіть книгу для повернення", "OK");
                 return;
             }
 
@@ -145,20 +141,19 @@ namespace CourseWork.Views
             }
 
             var library = Library.Instance;
-
             var simpleUser = library.GetSimpleUserByLogin(selectedUser.Login);
 
             try
             {
-                library.LendBook(selectedBook, simpleUser, DateTime.Now);
+                library.ReturnBook(selectedBook, simpleUser, DateTime.Now);
                 Serializer.SaveToXml(library.ToDTO(), libraryPath);
-                DisplayAlert("Успіх", $"Книгу \"{selectedBook.nameOfBook_}\" видано користувачу {simpleUser.login_}", "OK");
+                DisplayAlert("Успіх", $"Книгу \"{selectedBook.nameOfBook_}\" повернено користувачем {simpleUser.login_}", "OK");
                 LoadData();
                 selectedBook = null;
             }
             catch (Exception ex)
             {
-                DisplayAlert("Помилка", $"Не вдалося видати книгу: {ex.Message}", "OK");
+                DisplayAlert("Помилка", $"Не вдалося повернути книгу: {ex.Message}", "OK");
             }
         }
     }

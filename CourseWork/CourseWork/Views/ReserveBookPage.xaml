@@ -61,7 +61,7 @@
                     Clicked="OnSearchClicked"
                     BackgroundColor="#13A3AD"
                     TextColor="White"
-                    CornerRadius="10"
+                    CornerRadius="0"
                     HeightRequest="50"
                     Margin="0,0,0,10"/>
 
