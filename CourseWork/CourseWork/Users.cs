@@ -53,11 +53,6 @@ namespace CourseWork
         }
 
         public Admin(UserDTO dto) : base(dto) { }
-
-        public void AddBook(Book book)
-        {
-            Library.Instance.AddBook(book);
-        }
     }
 
     public class SimpleUser : User

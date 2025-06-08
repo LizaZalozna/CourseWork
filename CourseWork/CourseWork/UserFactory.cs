@@ -30,7 +30,8 @@ namespace CourseWork
             {
                 "Admin" => new Admin(dto),
                 "Librarian" => new Librarian(dto),
-                "SimpleUser" => new SimpleUser(dto)
+                "SimpleUser" => new SimpleUser(dto),
+                _ => throw new NotImplementedException()
             };
         }
     }

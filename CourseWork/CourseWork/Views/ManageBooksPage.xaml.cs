@@ -100,13 +100,17 @@ namespace CourseWork.Views
                             b.NameOfBook == selectedBook.NameOfBook &&
                             b.FullNameOfAuthor == selectedBook.FullNameOfAuthor);
 
-                        if (bookToRemove != null)
+                        if (bookToRemove.IsAvailable == true && bookToRemove.IsReserved == false)
                         {
-                            library.RemoveBook(new Book(bookToRemove));
-                            Serializer.SaveToXml(library.ToDTO(), libraryPath);
-                            LoadBooks();
-                            await DisplayAlert("Успіх", $"Книгу \"{selectedBook.NameOfBook}\" видалено", "OK");
+                            if (bookToRemove != null)
+                            {
+                                library.RemoveBook(new Book(bookToRemove));
+                                Serializer.SaveToXml(library.ToDTO(), libraryPath);
+                                LoadBooks();
+                                await DisplayAlert("Успіх", $"Книгу \"{selectedBook.NameOfBook}\" видалено", "OK");
+                            }
                         }
+                        else await DisplayAlert("Помилка", $"Неможливо видалити книгу", "OK");
                     }
                     catch (Exception ex)
                     {

@@ -52,7 +52,7 @@
       <FullNameOfAuthor>Метью Блейк</FullNameOfAuthor>
       <NameOfBook>Анна О</NameOfBook>
       <Genre>Детектив</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
       <ReservedByLogin />
     </Book>
@@ -199,6 +199,13 @@
       <IsAvailable>true</IsAvailable>
       <IsReserved>false</IsReserved>
     </Book>
+    <Book>
+      <FullNameOfAuthor>Аґата Крісті</FullNameOfAuthor>
+      <NameOfBook>І не лишилось жодного</NameOfBook>
+      <Genre>Детектив</Genre>
+      <IsAvailable>true</IsAvailable>
+      <IsReserved>false</IsReserved>
+    </Book>
   </Books>
   <Users>
     <UserDTO>
@@ -219,7 +226,7 @@
       <Password>amor2091</Password>
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
-        <Reputation>120</Reputation>
+        <Reputation>125</Reputation>
         <ReservedBooks />
         <Reservations />
         <LendedBooks>
@@ -227,6 +234,14 @@
             <FullNameOfAuthor>Аннетт Марі</FullNameOfAuthor>
             <NameOfBook>Червона зима</NameOfBook>
             <Genre>Фентезі</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+          <Book>
+            <FullNameOfAuthor>Метью Блейк</FullNameOfAuthor>
+            <NameOfBook>Анна О</NameOfBook>
+            <Genre>Детектив</Genre>
             <IsAvailable>false</IsAvailable>
             <IsReserved>false</IsReserved>
             <ReservedByLogin />
@@ -248,6 +263,21 @@
               <ReturnDate xsi:nil="true" />
             </LendingRecordData>
           </Record>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Метью Блейк</FullNameOfAuthor>
+              <NameOfBook>Анна О</NameOfBook>
+              <Genre>Детектив</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-08T09:50:20.581482+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
         </Lendings>
       </SimpleUserDetails>
     </UserDTO>
@@ -256,6 +286,115 @@
       <Login>mar_myr</Login>
       <Password>marmyr2025</Password>
       <Role>Librarian</Role>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Олександр Поле</FullName>
+      <Login>pol_o</Login>
+      <Password>plos209134</Password>
+      <Role>Librarian</Role>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Денис Ткач</FullName>
+      <Login>tkach_d</Login>
+      <Password>denys43981</Password>
+      <Role>Librarian</Role>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Ілона Мальована</FullName>
+      <Login>ilona_ma</Login>
+      <Password>ilonama83512</Password>
+      <Role>Librarian</Role>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Петро Ковальчук</FullName>
+      <Login>koval_p</Login>
+      <Password>koval653p</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Єлизавета Келембет</FullName>
+      <Login>kelembet_ye</Login>
+      <Password>kel782531</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Вероніка Короп</FullName>
+      <Login>korop_v</Login>
+      <Password>korop877274v</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Роман Гребінь</FullName>
+      <Login>roman_g</Login>
+      <Password>roman7612g</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Лариса Осадча</FullName>
+      <Login>osad_l</Login>
+      <Password>osadlosad</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Марина Калина</FullName>
+      <Login>maryna_k</Login>
+      <Password>maryna6512</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
+    </UserDTO>
+    <UserDTO>
+      <FullName>Нікіта Хмара</FullName>
+      <Login>hmara_n</Login>
+      <Password>hmara2025n</Password>
+      <Role>SimpleUser</Role>
+      <SimpleUserDetails>
+        <Reputation>100</Reputation>
+        <ReservedBooks />
+        <Reservations />
+        <LendedBooks />
+        <Lendings />
+      </SimpleUserDetails>
     </UserDTO>
   </Users>
   <Settings>
