@@ -29,8 +29,9 @@
       <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
       <NameOfBook>Та дівчина</NameOfBook>
       <Genre>Детектив</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
     <Book>
       <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
@@ -60,7 +61,7 @@
       <FullNameOfAuthor>Тесс Ґеррітсен</FullNameOfAuthor>
       <NameOfBook>Сад кісток</NameOfBook>
       <Genre>Жахи</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
       <ReservedByLogin />
     </Book>
@@ -69,14 +70,16 @@
       <NameOfBook>Ти</NameOfBook>
       <Genre>Жахи</Genre>
       <IsAvailable>true</IsAvailable>
-      <IsReserved>false</IsReserved>
+      <IsReserved>true</IsReserved>
+      <ReservedByLogin>osad_l</ReservedByLogin>
     </Book>
     <Book>
       <FullNameOfAuthor>Анастасія Нікуліна</FullNameOfAuthor>
       <NameOfBook>Завірюха</NameOfBook>
       <Genre>Фентезі</Genre>
       <IsAvailable>true</IsAvailable>
-      <IsReserved>false</IsReserved>
+      <IsReserved>true</IsReserved>
+      <ReservedByLogin>kelembet_ye</ReservedByLogin>
     </Book>
     <Book>
       <FullNameOfAuthor>Елізабет Лім</FullNameOfAuthor>
@@ -161,7 +164,8 @@
       <NameOfBook>Голландський дім</NameOfBook>
       <Genre>Історичний</Genre>
       <IsAvailable>true</IsAvailable>
-      <IsReserved>false</IsReserved>
+      <IsReserved>true</IsReserved>
+      <ReservedByLogin>roman_g</ReservedByLogin>
     </Book>
     <Book>
       <FullNameOfAuthor>Едвард Резерфорд</FullNameOfAuthor>
@@ -197,14 +201,16 @@
       <NameOfBook>Захар Беркут</NameOfBook>
       <Genre>Пригоди</Genre>
       <IsAvailable>true</IsAvailable>
-      <IsReserved>false</IsReserved>
+      <IsReserved>true</IsReserved>
+      <ReservedByLogin>hmara_n</ReservedByLogin>
     </Book>
     <Book>
       <FullNameOfAuthor>Аґата Крісті</FullNameOfAuthor>
       <NameOfBook>І не лишилось жодного</NameOfBook>
       <Genre>Детектив</Genre>
-      <IsAvailable>true</IsAvailable>
+      <IsAvailable>false</IsAvailable>
       <IsReserved>false</IsReserved>
+      <ReservedByLogin />
     </Book>
   </Books>
   <Users>
@@ -314,8 +320,33 @@
         <Reputation>100</Reputation>
         <ReservedBooks />
         <Reservations />
-        <LendedBooks />
-        <Lendings />
+        <LendedBooks>
+          <Book>
+            <FullNameOfAuthor>Тесс Ґеррітсен</FullNameOfAuthor>
+            <NameOfBook>Сад кісток</NameOfBook>
+            <Genre>Жахи</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+        </LendedBooks>
+        <Lendings>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Тесс Ґеррітсен</FullNameOfAuthor>
+              <NameOfBook>Сад кісток</NameOfBook>
+              <Genre>Жахи</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-09T23:44:40.310057+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
+        </Lendings>
       </SimpleUserDetails>
     </UserDTO>
     <UserDTO>
@@ -325,8 +356,32 @@
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
         <Reputation>100</Reputation>
-        <ReservedBooks />
-        <Reservations />
+        <ReservedBooks>
+          <Book>
+            <FullNameOfAuthor>Анастасія Нікуліна</FullNameOfAuthor>
+            <NameOfBook>Завірюха</NameOfBook>
+            <Genre>Фентезі</Genre>
+            <IsAvailable>true</IsAvailable>
+            <IsReserved>true</IsReserved>
+            <ReservedByLogin>kelembet_ye</ReservedByLogin>
+          </Book>
+        </ReservedBooks>
+        <Reservations>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Анастасія Нікуліна</FullNameOfAuthor>
+              <NameOfBook>Завірюха</NameOfBook>
+              <Genre>Фентезі</Genre>
+              <IsAvailable>true</IsAvailable>
+              <IsReserved>true</IsReserved>
+              <ReservedByLogin>kelembet_ye</ReservedByLogin>
+            </Book>
+            <RecordType>Reservation</RecordType>
+            <ReservationRecordData>
+              <ReservationDate>2025-06-09T23:43:50.141368+03:00</ReservationDate>
+            </ReservationRecordData>
+          </Record>
+        </Reservations>
         <LendedBooks />
         <Lendings />
       </SimpleUserDetails>
@@ -337,11 +392,36 @@
       <Password>korop877274v</Password>
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
-        <Reputation>100</Reputation>
+        <Reputation>105</Reputation>
         <ReservedBooks />
         <Reservations />
-        <LendedBooks />
-        <Lendings />
+        <LendedBooks>
+          <Book>
+            <FullNameOfAuthor>Аґата Крісті</FullNameOfAuthor>
+            <NameOfBook>І не лишилось жодного</NameOfBook>
+            <Genre>Детектив</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+        </LendedBooks>
+        <Lendings>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Аґата Крісті</FullNameOfAuthor>
+              <NameOfBook>І не лишилось жодного</NameOfBook>
+              <Genre>Детектив</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-09T23:45:05.891304+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
+        </Lendings>
       </SimpleUserDetails>
     </UserDTO>
     <UserDTO>
@@ -351,8 +431,32 @@
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
         <Reputation>100</Reputation>
-        <ReservedBooks />
-        <Reservations />
+        <ReservedBooks>
+          <Book>
+            <FullNameOfAuthor>Енн Петчетт</FullNameOfAuthor>
+            <NameOfBook>Голландський дім</NameOfBook>
+            <Genre>Історичний</Genre>
+            <IsAvailable>true</IsAvailable>
+            <IsReserved>true</IsReserved>
+            <ReservedByLogin>roman_g</ReservedByLogin>
+          </Book>
+        </ReservedBooks>
+        <Reservations>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Енн Петчетт</FullNameOfAuthor>
+              <NameOfBook>Голландський дім</NameOfBook>
+              <Genre>Історичний</Genre>
+              <IsAvailable>true</IsAvailable>
+              <IsReserved>true</IsReserved>
+              <ReservedByLogin>roman_g</ReservedByLogin>
+            </Book>
+            <RecordType>Reservation</RecordType>
+            <ReservationRecordData>
+              <ReservationDate>2025-06-09T23:42:22.556855+03:00</ReservationDate>
+            </ReservationRecordData>
+          </Record>
+        </Reservations>
         <LendedBooks />
         <Lendings />
       </SimpleUserDetails>
@@ -364,8 +468,32 @@
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
         <Reputation>100</Reputation>
-        <ReservedBooks />
-        <Reservations />
+        <ReservedBooks>
+          <Book>
+            <FullNameOfAuthor>Керолайн Кепнес</FullNameOfAuthor>
+            <NameOfBook>Ти</NameOfBook>
+            <Genre>Жахи</Genre>
+            <IsAvailable>true</IsAvailable>
+            <IsReserved>true</IsReserved>
+            <ReservedByLogin>osad_l</ReservedByLogin>
+          </Book>
+        </ReservedBooks>
+        <Reservations>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Керолайн Кепнес</FullNameOfAuthor>
+              <NameOfBook>Ти</NameOfBook>
+              <Genre>Жахи</Genre>
+              <IsAvailable>true</IsAvailable>
+              <IsReserved>true</IsReserved>
+              <ReservedByLogin>osad_l</ReservedByLogin>
+            </Book>
+            <RecordType>Reservation</RecordType>
+            <ReservationRecordData>
+              <ReservationDate>2025-06-09T23:41:43.156134+03:00</ReservationDate>
+            </ReservationRecordData>
+          </Record>
+        </Reservations>
         <LendedBooks />
         <Lendings />
       </SimpleUserDetails>
@@ -389,11 +517,60 @@
       <Password>hmara2025n</Password>
       <Role>SimpleUser</Role>
       <SimpleUserDetails>
-        <Reputation>100</Reputation>
-        <ReservedBooks />
-        <Reservations />
-        <LendedBooks />
-        <Lendings />
+        <Reputation>105</Reputation>
+        <ReservedBooks>
+          <Book>
+            <FullNameOfAuthor>Іван Франко</FullNameOfAuthor>
+            <NameOfBook>Захар Беркут</NameOfBook>
+            <Genre>Пригоди</Genre>
+            <IsAvailable>true</IsAvailable>
+            <IsReserved>true</IsReserved>
+            <ReservedByLogin>hmara_n</ReservedByLogin>
+          </Book>
+        </ReservedBooks>
+        <Reservations>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Іван Франко</FullNameOfAuthor>
+              <NameOfBook>Захар Беркут</NameOfBook>
+              <Genre>Пригоди</Genre>
+              <IsAvailable>true</IsAvailable>
+              <IsReserved>true</IsReserved>
+              <ReservedByLogin>hmara_n</ReservedByLogin>
+            </Book>
+            <RecordType>Reservation</RecordType>
+            <ReservationRecordData>
+              <ReservationDate>2025-06-09T23:40:38.864236+03:00</ReservationDate>
+            </ReservationRecordData>
+          </Record>
+        </Reservations>
+        <LendedBooks>
+          <Book>
+            <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
+            <NameOfBook>Та дівчина</NameOfBook>
+            <Genre>Детектив</Genre>
+            <IsAvailable>false</IsAvailable>
+            <IsReserved>false</IsReserved>
+            <ReservedByLogin />
+          </Book>
+        </LendedBooks>
+        <Lendings>
+          <Record>
+            <Book>
+              <FullNameOfAuthor>Рут Веа</FullNameOfAuthor>
+              <NameOfBook>Та дівчина</NameOfBook>
+              <Genre>Детектив</Genre>
+              <IsAvailable>false</IsAvailable>
+              <IsReserved>false</IsReserved>
+              <ReservedByLogin />
+            </Book>
+            <RecordType>Lending</RecordType>
+            <LendingRecordData>
+              <LendDate>2025-06-09T23:45:43.043249+03:00</LendDate>
+              <ReturnDate xsi:nil="true" />
+            </LendingRecordData>
+          </Record>
+        </Lendings>
       </SimpleUserDetails>
     </UserDTO>
   </Users>

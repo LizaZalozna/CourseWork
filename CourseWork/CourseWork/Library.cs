@@ -19,6 +19,16 @@ namespace CourseWork
             settings = new Settings(0,0,0,0,0,0);
         }
 
+        public static Library Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new Library();
+                return instance;
+            }
+        }
+
         private Library(LibraryDTO dto)
         {
             books = dto.Books.Select(book => new Book(book)).ToList();
@@ -34,16 +44,6 @@ namespace CourseWork
                 Users = users.Select(user => user.ToDTO()).ToList(),
                 Settings = settings.ToDTO()
             };
-        }
-
-        public static Library Instance
-        {
-            get
-            {
-                if (instance == null)
-                    instance = new Library();
-                return instance;
-            }
         }
 
         public static Library Initialize(LibraryDTO dto)

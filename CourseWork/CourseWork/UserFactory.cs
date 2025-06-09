@@ -20,7 +20,7 @@ namespace CourseWork
                     else
                         throw new UnauthorizedAccessException("Тільки бібліотекар може створювати звичайних користувачів");
                 default:
-                    throw new ArgumentException("Unknown user type");
+                    throw new ArgumentException("Невідомий тип користувачів");
             }
         }
 
